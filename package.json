@@ -18,6 +18,7 @@
     "@tailwindcss/typography": "^0.5.7",
     "autoprefixer": "^10.4.12",
     "clsx": "^1.2.1",
+    "ethos-wallet-beta": "^0.0.170",
     "focus-visible": "^5.2.0",
     "next": "^12.3.1",
     "postcss-focus-visible": "^6.0.4",

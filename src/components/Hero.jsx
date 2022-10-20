@@ -50,7 +50,7 @@ export function Hero() {
             />
             <div className="relative">
               <p className="inline bg-gradient-to-r from-purple-200 via-violet-400 to-purple-200 bg-clip-text font-display text-5xl tracking-tight text-transparent">
-                Make your dApp irresistable.
+                The easiest sign in experience on Sui.
               </p>
               <p className="mt-3 text-2xl tracking-tight text-slate-400">
                 Ethos will take your users from wallet-less to their first digital asset in seconds.
@@ -78,7 +78,7 @@ export function Hero() {
                 priority
               />
               <Image
-                className="absolute -bottom-40 -right-44"
+                className="absolute -bottom-52 right-64"
                 src={blurIndigoImage}
                 alt=""
                 width={567}
