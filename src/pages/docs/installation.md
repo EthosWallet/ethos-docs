@@ -3,27 +3,50 @@ title: Installation
 description: Quidem magni aut exercitationem maxime rerum eos.
 ---
 
-Quasi sapiente voluptates aut minima non doloribus similique quisquam. In quo expedita ipsum nostrum corrupti incidunt. Et aut eligendi ea perferendis.
+Ethos is the simplest way to integrate a connect wallet experience into your React dApp on Sui.
 
 ---
 
-## Quis vel iste dicta
+## Install
 
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur.
+```
+npm install ethos-wallet-beta
+```
 
-### Et pariatur ab quas
+or
 
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
+```
+yarn add ethos-wallet-beta
+```
+
+### Implementation
+
+Start by importing Ethos and create an `EthosConfiguration` and decide what to do when the wallet gets connected. Then wrap your app with the `EthosWrapper`.
 
 ```js
-/** @type {import('@tailwindlabs/lorem').ipsum} */
-export default {
-  lorem: 'ipsum',
-  dolor: ['sit', 'amet', 'consectetur'],
-  adipiscing: {
-    elit: true,
-  },
+import { EthosWrapper, SignInButton, ethos } from 'ethos-wallet-beta';
+
+const ethosConfig: EthosConfiguration = {
+  appId: 'your-app-id',
 }
+
+const onWalletConnected = (provider: any, signer: any) => {
+  console.log('provider :>> ', provider);
+  console.log('signer :>> ', signer);
+  // your code, probably updating component state with the signer
+}
+
+const App = () => {
+  return (
+    <EthosWrapper
+      ethosConfiguration={ethosConfig}
+      onWalletConnected={({ provider, signer }) => onWalletConnected(provider, signer)}
+    >
+      /* Your App */
+      <SignInButton />
+    </WagmiConfig>
+  );
+};
 ```
 
 Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.
