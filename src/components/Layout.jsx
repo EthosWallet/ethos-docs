@@ -11,8 +11,6 @@ import { Navigation } from '@/components/Navigation'
 import { Prose } from '@/components/Prose'
 import { Search } from '@/components/Search'
 import { ThemeSelector } from '@/components/ThemeSelector'
-import logo from '@/images/ethos-logo.png';
-import blurIndigoImage from '@/images/blur-indigo.png'
 
 
 const navigation = [
@@ -21,21 +19,22 @@ const navigation = [
     links: [
       { title: 'Introduction', href: '/' },
       { title: 'Example app', href: '/docs/example-app' },
+      { title: 'How it works', href: '/docs/how-it-works' },
     ],
   },
   {
     title: 'Getting started',
     links: [
       { title: 'Installation', href: '/docs/installation' },
-      { title: 'Connect button', href: '/docs/connect-button' },
-      { title: 'Sign in options', href: '/docs/sign-in-options' },
+      { title: 'Sign in button', href: '/docs/sign-in-button' },
       { title: 'Theming', href: '/docs/theming' },
     ],
   },
   {
-    title: 'Advanced',
+    title: 'API reference',
     links: [
       { title: 'Hooks', href: '/docs/hooks' },
+      { title: 'Sign in options', href: '/docs/sign-in-options' },
       { title: 'Convenience methods', href: '/docs/convenience-methods' },
     ],
   },

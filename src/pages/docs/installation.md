@@ -3,92 +3,77 @@ title: Installation
 description: Quidem magni aut exercitationem maxime rerum eos.
 ---
 
-Ethos is the simplest way to integrate a connect wallet experience into your React dApp on Sui.
+EthosConnect is the simplest way to integrate a connect wallet experience into your React dApp on Sui.
 
 ---
 
-## Install
+## Quick start
 
+You can scaffold a new app with [Next.js](https://nextjs.org/) and EthosConnect with:
+
+```bash
+npm init EthosWallet/ethos-connect@latest
+# or
+yarn create EthosWallet/ethos-connect@latest
+# or
+pnpm create EthosWallet/ethos-connect@latest
 ```
+
+This will prompt you for a project name, generate a new directory containing a boilerplate project, and install all required dependencies.
+
+Alternatively, you can manually integrate EthosConnect into your existing project.
+
+---
+
+## Manual setup
+
+```bash
 npm install ethos-wallet-beta
 ```
 
 or
 
-```
+```bash
 yarn add ethos-wallet-beta
 ```
 
-### Implementation
+{% callout title="Note: EthosConnect is a React library. CHANGE MY STYLING PLEASE" / %}
+
+### Configure and wrap providers
 
 Start by importing Ethos and create an `EthosConfiguration` and decide what to do when the wallet gets connected. Then wrap your app with the `EthosWrapper`.
 
 ```js
-import { EthosWrapper, SignInButton, ethos } from 'ethos-wallet-beta';
-
-const ethosConfig: EthosConfiguration = {
-  appId: 'your-app-id',
-}
-
-const onWalletConnected = (provider: any, signer: any) => {
-  console.log('provider :>> ', provider);
-  console.log('signer :>> ', signer);
-  // your code, probably updating component state with the signer
-}
+import { EthosWrapper } from 'ethos-wallet-beta';
 
 const App = () => {
   return (
-    <EthosWrapper
-      ethosConfiguration={ethosConfig}
-      onWalletConnected={({ provider, signer }) => onWalletConnected(provider, signer)}
+    <EthosProvider
+      hideEmailSignIn={false} // optional - defaults to false
     >
-      /* Your App */
-      <SignInButton />
-    </WagmiConfig>
+      <YourApp />
+    <EthosProvider />
   );
 };
 ```
 
-Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.
+You may optionally hide the email sign-in. Learn more in [Customize sign in options](customize-sign-in-options).
 
-### Natus aspernatur iste
+### Add the sign in button
 
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
+Then, in your app, import and render the `SignInButton` component.
 
-Voluptas beatae omnis omnis voluptas. Cum architecto ab sit ad eaque quas quia distinctio. Molestiae aperiam qui quis deleniti soluta quia qui. Dolores nostrum blanditiis libero optio id. Mollitia ad et asperiores quas saepe alias.
+```js
+import { SignInButton } from 'ethos-wallet-beta'
+export const YourApp = () => {
+  return <SignInButton />
+}
+```
 
----
-
-## Quos porro ut molestiae
-
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur.
-
-### Voluptatem quas possimus
-
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
-
-Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.
-
-### Id vitae minima
-
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
-
-Voluptas beatae omnis omnis voluptas. Cum architecto ab sit ad eaque quas quia distinctio. Molestiae aperiam qui quis deleniti soluta quia qui. Dolores nostrum blanditiis libero optio id. Mollitia ad et asperiores quas saepe alias.
+Learn how to customize your `SignInButton` component with [Sign in button](sign-in-button)
 
 ---
 
-## Vitae laborum maiores
+## See some examples
 
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur.
-
-### Corporis exercitationem
-
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
-
-Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.
-
-### Reprehenderit magni
-
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
-
-Voluptas beatae omnis omnis voluptas. Cum architecto ab sit ad eaque quas quia distinctio. Molestiae aperiam qui quis deleniti soluta quia qui. Dolores nostrum blanditiis libero optio id. Mollitia ad et asperiores quas saepe alias.
+To look at some examples of EthosConnect, see the [official examples](https://github.com/EthosWallet/ethosconnect/tree/main/examples).
