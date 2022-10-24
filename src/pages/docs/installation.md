@@ -12,11 +12,11 @@ EthosConnect is the simplest way to integrate a connect wallet experience into y
 You can scaffold a new app with [Next.js](https://nextjs.org/) and EthosConnect with:
 
 ```bash
-npm init EthosWallet/ethos-connect@latest
+npm init EthosWallet/ethosconnect@latest
 # or
-yarn create EthosWallet/ethos-connect@latest
+yarn create EthosWallet/ethosconnect@latest
 # or
-pnpm create EthosWallet/ethos-connect@latest
+pnpm create EthosWallet/ethosconnect@latest
 ```
 
 This will prompt you for a project name, generate a new directory containing a boilerplate project, and install all required dependencies.
@@ -48,16 +48,14 @@ import { EthosWrapper } from 'ethos-wallet-beta';
 
 const App = () => {
   return (
-    <EthosProvider
-      hideEmailSignIn={false} // optional - defaults to false
-    >
+    <EthosProvider>
       <YourApp />
     <EthosProvider />
   );
 };
 ```
 
-You may optionally hide the email sign-in. Learn more in [Customize sign in options](customize-sign-in-options).
+You may optionally hide the email sign-in. Learn more in [Customize sign in options](sign-in-options).
 
 ### Add the sign in button
 

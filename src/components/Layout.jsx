@@ -36,6 +36,7 @@ const navigation = [
       { title: 'Hooks', href: '/docs/hooks' },
       { title: 'Sign in options', href: '/docs/sign-in-options' },
       { title: 'Convenience methods', href: '/docs/convenience-methods' },
+      { title: 'Preapprovals', href: '/docs/preapprovals' },
     ],
   },
 ]
