@@ -11,7 +11,7 @@ const nextConfig = {
   },
   images: {
     loader: 'akamai',
-    path: ''
+    path: '/'
   },
   webpack(config) {
     config.module.rules.push({
