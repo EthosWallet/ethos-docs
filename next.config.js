@@ -9,12 +9,6 @@ const nextConfig = {
     newNextLinkBehavior: true,
     scrollRestoration: true,
   },
-  images: {
-    loader: 'akamai',
-    path: ''
-  },
-  basePath: '/nextjs-pages',
-  assetPrefix: '/nextjs-pages',
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
