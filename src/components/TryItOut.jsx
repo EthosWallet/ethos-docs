@@ -12,7 +12,7 @@ const TryItOut = () => {
                     <div
                         className={'flex items-center rounded-full px-2.5 bg-slate-800'}
                     >
-                        Try it out
+                        Try it out 
                     </div>
                 </div>
             </div>
