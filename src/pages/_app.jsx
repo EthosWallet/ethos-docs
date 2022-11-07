@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { slugifyWithCounter } from '@sindresorhus/slugify'
-import { EthosWrapper, SignInButton, ethos } from 'ethos-wallet-beta';
+import { EthosWrapper, SignInButton, ethos } from 'ethos-connect';
 
 import { Layout } from '@/components/Layout'
 
