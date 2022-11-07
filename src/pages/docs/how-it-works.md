@@ -7,12 +7,12 @@ How the Ethos sign in components function
 
 ---
 
-## Implemented using the Mysten Wallet Standard
+## Email sign in
 
-The [Mysten Wallet Standard](https://github.com/wallet-standard/wallet-standard/)...
+Blah
 
 ---
 
-## Optional email sign in
+## Implemented using the Mysten Wallet Standard
 
-Blah
+The [Mysten Wallet Standard](https://github.com/wallet-standard/wallet-standard/)...

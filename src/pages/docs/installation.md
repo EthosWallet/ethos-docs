@@ -1,56 +1,68 @@
 ---
 title: Installation
-description: The simplest way to connect a wallet on Sui
+description: Quidem magni aut exercitationem maxime rerum eos.
 ---
 
 EthosConnect is the simplest way to integrate a connect wallet experience into your React dApp on Sui.
 
 ---
 
-## Install
+## Quick start
+
+You can scaffold a new app with [Next.js](https://nextjs.org/) and EthosConnect with:
 
 ```bash
-npm install ethos-connect
+npm init EthosWallet/ethosconnect@latest
+# or
+yarn create EthosWallet/ethosconnect@latest
+# or
+pnpm create EthosWallet/ethosconnect@latest
+```
+
+This will prompt you for a project name, generate a new directory containing a boilerplate project, and install all required dependencies.
+
+Alternatively, you can manually integrate EthosConnect into your existing project.
+
+---
+
+## Manual setup
+
+```bash
+npm install ethos-wallet-beta
 ```
 
 or
 
 ```bash
-yarn add ethos-connect
+yarn add ethos-wallet-beta
 ```
 
-{% callout title="Note" %}
-EthosConnect is a [React](https://reactjs.org/) library.
-{% /callout %}
+{% callout title="Note: EthosConnect is a React library. CHANGE MY STYLING PLEASE" / %}
 
 ### Configure and wrap providers
 
-Start by importing Ethos and create an `EthosConfiguration` and decide what to do when the wallet gets connected. Then wrap your app with the `EthosConnectProvider`.
+Start by importing Ethos and create an `EthosConfiguration` and decide what to do when the wallet gets connected. Then wrap your app with the `EthosWrapper`.
 
 ```js
-import { EthosConnectProvider } from 'ethos-connect';
+import { EthosWrapper } from 'ethos-wallet-beta';
 
 const App = () => {
   return (
-    <EthosConnectProvider
-      hideEmailSignIn={true} // defaults to false
-    >
+    <EthosProvider>
       <YourApp />
-    <EthosConnectProvider />
+    <EthosProvider />
   );
 };
 ```
 
-Interested in customizing the text shown in the sign-in modal? Check out the [Customization page](customization).
-
-If you'd like to show the email option to users, please [contact us](mailto:support@ethoswallet.xyz) to get an API key.
+You may optionally hide the email sign-in. Learn more in [Customize sign in options](sign-in-options).
 
 ### Add the sign in button
 
 Then, in your app, import and render the `SignInButton` component.
 
 ```js
-import { SignInButton } from 'ethos-connect'
+import { SignInButton } from 'ethos-wallet-beta'
 export const YourApp = () => {
   return <SignInButton />
 }

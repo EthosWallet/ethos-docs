@@ -16,7 +16,7 @@ You can use the `transact` method to interact with a Sui contract
 Given the details of your contract, `transact` will call the function and module.
 
 ```js
-import { ethos } from 'ethos-connect';
+import { ethos } from 'ethos-wallet-beta';
 
 const mintDetails = {
               network: 'devNet',
@@ -47,7 +47,7 @@ The `sign` method will prompt the user to sign a given transaction.
 {% callout title="PARAM TYPE NOT IMPLEMENTED" / %}
 
 ```js
-import { ethos } from 'ethos-connect';
+import { ethos } from 'ethos-wallet-beta';
 
 const unsignedTransaction = {...}
 

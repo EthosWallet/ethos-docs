@@ -19,7 +19,7 @@ const navigation = [
     links: [
       { title: 'Introduction', href: '/' },
       { title: 'Example app', href: '/docs/example-app' },
-      // { title: 'How it works', href: '/docs/how-it-works' },
+      { title: 'How it works', href: '/docs/how-it-works' },
     ],
   },
   {
@@ -27,8 +27,7 @@ const navigation = [
     links: [
       { title: 'Installation', href: '/docs/installation' },
       { title: 'Sign in button', href: '/docs/sign-in-button' },
-      // { title: 'Wallet widget', href: '/docs/wallet-widget' },
-      { title: 'Customization', href: '/docs/customization' },
+      { title: 'Theming', href: '/docs/theming' },
     ],
   },
   {
@@ -36,9 +35,8 @@ const navigation = [
     links: [
       { title: 'Hooks', href: '/docs/hooks' },
       { title: 'Sign in options', href: '/docs/sign-in-options' },
-      { title: 'Types', href: '/docs/types' },
-      // { title: 'Convenience methods', href: '/docs/convenience-methods' },
-      // { title: 'Preapprovals', href: '/docs/preapprovals' },
+      { title: 'Convenience methods', href: '/docs/convenience-methods' },
+      { title: 'Preapprovals', href: '/docs/preapprovals' },
     ],
   },
 ]
@@ -139,7 +137,6 @@ function useTableOfContents(tableOfContents) {
   return currentSection
 }
 
-// export function Layout({ children, title, tableOfContents, hideEmail, setHideEmail }) {
 export function Layout({ children, title, tableOfContents }) {
   let router = useRouter()
   let isHomePage = router.pathname === '/'
@@ -162,23 +159,11 @@ export function Layout({ children, title, tableOfContents }) {
     return section.children.findIndex(isActive) > -1
   }
 
-  const [hideEmail, setHideEmail] = useState(false);
-  const handleClick = useCallback(() => {
-    console.log('click');
-    setHideEmail(!hideEmail)
-  }, [hideEmail])
-
   return (
     <>
       <Header navigation={navigation} />
 
-      {/* hideEmail: {hideEmail ? 'true' : 'false'}
-      <br />
-      <button onClick={handleClick}>
-        Toggle
-      </button> */}
-
-      {isHomePage && <Hero hideEmail={hideEmail} setHideEmail={setHideEmail} />}
+      {isHomePage && <Hero />}
 
       <div className="relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12">
         <div className="hidden lg:relative lg:block lg:flex-none">
