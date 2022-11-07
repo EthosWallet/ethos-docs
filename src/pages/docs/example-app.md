@@ -7,4 +7,10 @@ This sample app uses React with TypeScript, Next JS, and Tailwind CSS.
 
 [View the live app](https://ethos-example-app.onrender.com)
 
+See the code
+- first example with specific lines in GH
+- second example
+
+Also, make a friendly readme
+
 [See the code](https://github.com/EthosWallet/ethos-example-app)

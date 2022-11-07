@@ -1,9 +1,8 @@
----
-title: Theming
-description: Using and customizing the themes
----
+===========
+COMING SOON
+===========
 
-The EthosConnect UI can be cusromized to match your branding. You can change the theme to light or dark, as well as add a custom accent color.
+The EthosConnect UI can be customized to match your branding. You can change the theme to light or dark, as well as add a custom accent color.
 
 ---
 
@@ -15,15 +14,15 @@ There are two options for theme, which govern the background color and text colo
 - `Dark`
 
 ```js
-import { EthosWrapper, Themes } from 'ethos-wallet-beta';
+import { EthosConnectProvider, Themes } from 'ethos-connect';
 
 const App = () => {
   return (
-    <EthosProvider
+    <EthosConnectProvider
       theme={Themes.Dark}
     >
       <YourApp />
-    <EthosProvider />
+    <EthosConnectProvider />
   );
 };
 ```
@@ -34,15 +33,15 @@ const App = () => {
 You can use any hex value for your accent color. This will affect the button color and other primary accents.
 
 ```js
-import { EthosWrapper } from 'ethos-wallet-beta';
+import { EthosConnectProvider } from 'ethos-connect';
 
 const App = () => {
   return (
-    <EthosProvider
+    <EthosConnectProvider
       accentColor="#0891b2"
     >
       <YourApp />
-    <EthosProvider />
+    <EthosConnectProvider />
   );
 };
 ```

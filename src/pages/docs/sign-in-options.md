@@ -3,7 +3,7 @@ title: Sign in options
 description: Configure how your users can connect
 ---
 
-Configure how your users can connect to your website. Options include browser extension wallets and [EthosConnect's sign in feature](how-it-works#email-sign-in).
+Configure how your users can connect to your website. Options include browser extension wallets and email sign-in.
 
 ---
 
@@ -12,21 +12,15 @@ Configure how your users can connect to your website. Options include browser ex
 Although it is recommended to include email sign in to expand your dApp's audience, you may hide it with one simple code change.
 
 ```js
-import { EthosWrapper } from 'ethos-wallet-beta';
+import { EthosConnectProvider } from 'ethos-connect';
 
 const App = () => {
   return (
-    <EthosProvider
+    <EthosConnectProvider
         hideEmailSignIn={true}
     >
       <YourApp />
-    <EthosProvider />
+    <EthosConnectProvider />
   );
 };
 ```
-
----
-
-## Adding support for new wallets on Sui
-
-Is your wallet not shown here? [Contact us](mailto:support@ethoswallet.xyz) to get a new wallet added.

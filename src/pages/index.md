@@ -1,7 +1,7 @@
 ---
 title: Introduction
 pageTitle: Ethos Wallet Docs
-description: The easiest sign-in experience on Sui.
+description: The easiest sign-in experience on Sui
 ---
 
 Ethos is a Rect library that makes it easy to connect a wallet to your dApp on Sui.
@@ -20,4 +20,4 @@ Ethos is a Rect library that makes it easy to connect a wallet to your dApp on S
 
 {% /quick-links %}
 
-Have feedback on Ethos? Send us a note using [this link that isn&apos;t avialable yet]().
+Have feedback on Ethos? [Send us a note](mailto:support@ethoswallet.xyz).

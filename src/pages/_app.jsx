@@ -1,11 +1,12 @@
+import React, { useState } from 'react';
 import Head from 'next/head'
 import { slugifyWithCounter } from '@sindresorhus/slugify'
-import { EthosWrapper, SignInButton, ethos } from 'ethos-wallet-beta';
 
 import { Layout } from '@/components/Layout'
 
 import 'focus-visible'
 import '@/styles/tailwind.css'
+import { useCallback } from 'react';
 
 function getNodeText(node) {
   let text = ''
@@ -49,15 +50,6 @@ function collectHeadings(nodes, slugify = slugifyWithCounter()) {
   return sections
 }
 
-const ethosConfiguration = {
-  appId: 'ethos-docs',
-}
-const onWalletConnected = (provider, signer) => {
-  console.log('provider :>> ', provider);
-  console.log('signer :>> ', signer);
-  // your code, probably updating component state with the signer
-}
-
 export default function App({ Component, pageProps }) {
   let title = pageProps.markdoc?.frontmatter.title
 
@@ -71,20 +63,50 @@ export default function App({ Component, pageProps }) {
     ? collectHeadings(pageProps.markdoc.content)
     : []
 
-  return (
-    <EthosWrapper
-      ethosConfiguration={ethosConfiguration}
-      onWalletConnected={({ provider, signer }) => onWalletConnected(provider, signer)}
-    >
-      <Head>
-        <title>{pageTitle}</title>
-        {description && <meta name="description" content={description} />}
-      </Head>
-      <Layout title={title} tableOfContents={tableOfContents}>
-        <Component {...pageProps} />
-      </Layout>
+  const [hideEmail, setHideEmail] = useState(false);
 
-    </EthosWrapper>
+  const handleClick = useCallback(() => {
+    console.log('click');
+    setHideEmail(!hideEmail)
+  }, [hideEmail])
+
+  const ethosConfiguration = {
+    appId: 'ethos-docs',
+    hideEmailOption: hideEmail
+  }
+  const onWalletConnected = (provider, signer) => {
+    console.log('provider :>> ', provider);
+    console.log('signer :>> ', signer);
+    // your code, probably updating component state with the signer
+  }
+
+  return (
+    // <EthosWrapper
+    //   ethosConfiguration={{
+    //     walletAppUrl: '',
+    //     appId: 'ethos',
+    //   }}
+    //   dappName="Your dApp&apos;s Name"
+    //   // dappIcon={<EthosLogo />}
+    //   connectMessage={<div>Your connect message!</div>}
+    // >
+      <>
+        <Head>
+          <title>{pageTitle}</title>
+          {description && <meta name="description" content={description} />}
+        </Head>
+        <Layout title={title} tableOfContents={tableOfContents} hideEmail={hideEmail} setHideEmail={setHideEmail}>
+          <Component {...pageProps} />
+        </Layout>
+      </>
+
+      // hideEmail: {hideEmail ? 'true' : 'false'}
+      // <br />
+      // <button onClick={handleClick}>
+      //   toggle
+      // </button>
+
+    // {/* </EthosWrapper> */}
 
   )
 }
