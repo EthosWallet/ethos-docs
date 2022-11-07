@@ -1,0 +1,18 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/docs/convenience-methods": "pages/docs/convenience-methods.js",
+  "/docs/example-app": "pages/docs/example-app.js",
+  "/docs/hooks": "pages/docs/hooks.js",
+  "/docs/how-it-works": "pages/docs/how-it-works.js",
+  "/docs/installation": "pages/docs/installation.js",
+  "/docs/lorem": "pages/docs/lorem.js",
+  "/docs/preapprovals": "pages/docs/preapprovals.js",
+  "/docs/sign-in-button": "pages/docs/sign-in-button.js",
+  "/docs/sign-in-options": "pages/docs/sign-in-options.js",
+  "/docs/theming": "pages/docs/theming.js",
+  "/docs/try-it-out": "pages/docs/try-it-out.js",
+  "/": "pages/index.js",
+  "/404": "pages/404.html"
+}
