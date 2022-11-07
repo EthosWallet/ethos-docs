@@ -1,4 +1,4 @@
-import { SignInButton } from 'ethos-wallet-beta';
+import { SignInButton } from 'ethos-connect';
 
 
 const TryItOut = () => {

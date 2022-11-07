@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { slugifyWithCounter } from '@sindresorhus/slugify'
-import { EthosWrapper, SignInButton, ethos } from 'ethos-wallet-beta';
 
 import { Layout } from '@/components/Layout'
 
@@ -49,15 +48,6 @@ function collectHeadings(nodes, slugify = slugifyWithCounter()) {
   return sections
 }
 
-const ethosConfiguration = {
-  appId: 'ethos-docs',
-}
-const onWalletConnected = (provider, signer) => {
-  console.log('provider :>> ', provider);
-  console.log('signer :>> ', signer);
-  // your code, probably updating component state with the signer
-}
-
 export default function App({ Component, pageProps }) {
   let title = pageProps.markdoc?.frontmatter.title
 
@@ -72,10 +62,7 @@ export default function App({ Component, pageProps }) {
     : []
 
   return (
-    <EthosWrapper
-      ethosConfiguration={ethosConfiguration}
-      onWalletConnected={({ provider, signer }) => onWalletConnected(provider, signer)}
-    >
+    <>
       <Head>
         <title>{pageTitle}</title>
         {description && <meta name="description" content={description} />}
@@ -83,8 +70,6 @@ export default function App({ Component, pageProps }) {
       <Layout title={title} tableOfContents={tableOfContents}>
         <Component {...pageProps} />
       </Layout>
-
-    </EthosWrapper>
-
+    </>
   )
 }
