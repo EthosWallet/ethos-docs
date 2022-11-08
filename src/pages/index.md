@@ -1,6 +1,6 @@
 ---
 title: Introduction
-pageTitle: Ethos Wallet Docs
+pageTitle: EthosConnect Docs
 description: The easiest sign-in experience on Sui
 ---
 
