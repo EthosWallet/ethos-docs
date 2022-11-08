@@ -57,9 +57,3 @@ export const YourApp = () => {
 ```
 
 Learn how to customize your `SignInButton` component with [Sign in button](sign-in-button)
-
----
-
-## See some examples
-
-To look at some examples of EthosConnect, see the [official examples](https://github.com/EthosWallet/ethosconnect/tree/main/examples).
