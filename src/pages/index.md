@@ -4,7 +4,7 @@ pageTitle: Ethos Wallet Docs
 description: The easiest sign-in experience on Sui
 ---
 
-Ethos is a React library that makes it easy to connect a wallet to your dApp on Sui.
+EthosConnect is a React library that makes it easy to connect a wallet to your dApp on Sui.
 
 {% .lead %}
 

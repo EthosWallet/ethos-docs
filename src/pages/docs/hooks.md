@@ -9,7 +9,7 @@ EthosConnect ships with hooks to interact with the wallet and Sui blockchain.
 
 # `useWallet`
 
-Thos hook gives you information about the user's wallet. Click the name of each to jump to an example of its implementation.
+This hook gives you information about the user's wallet. Click the name of each to jump to an example of its implementation.
 
 [comment]: <> (@dev Here's a handy markdown table generator: https://www.tablesgenerator.com/markdown_tables)
 
