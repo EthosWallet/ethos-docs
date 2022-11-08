@@ -70,8 +70,8 @@ export function Hero() {
                   Email sign-in options with one line of code
                 </p>
                 <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
-                  <Button href="/docs/installation">Get started</Button>
-                  <Button href="/docs/example-app" variant="secondary">
+                  <Button href="/installation">Get started</Button>
+                  <Button href="/example-app" variant="secondary">
                     See the example app
                   </Button>
                 </div>

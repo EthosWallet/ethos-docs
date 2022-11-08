@@ -18,27 +18,27 @@ const navigation = [
     title: 'Overview',
     links: [
       { title: 'Introduction', href: '/' },
-      { title: 'Example app', href: '/docs/example-app' },
-      // { title: 'How it works', href: '/docs/how-it-works' },
+      { title: 'Example app', href: '/example-app' },
+      // { title: 'How it works', href: '/how-it-works' },
     ],
   },
   {
     title: 'Getting started',
     links: [
-      { title: 'Installation', href: '/docs/installation' },
-      { title: 'Sign in button', href: '/docs/sign-in-button' },
-      // { title: 'Wallet widget', href: '/docs/wallet-widget' },
-      { title: 'Customization', href: '/docs/customization' },
+      { title: 'Installation', href: '/installation' },
+      { title: 'Sign in button', href: '/sign-in-button' },
+      // { title: 'Wallet widget', href: '/wallet-widget' },
+      { title: 'Customization', href: '/customization' },
     ],
   },
   {
     title: 'API reference',
     links: [
-      { title: 'Hooks', href: '/docs/hooks' },
-      { title: 'Sign in options', href: '/docs/sign-in-options' },
-      { title: 'Types', href: '/docs/types' },
-      // { title: 'Convenience methods', href: '/docs/convenience-methods' },
-      // { title: 'Preapprovals', href: '/docs/preapprovals' },
+      { title: 'Hooks', href: '/hooks' },
+      { title: 'Sign in options', href: '/sign-in-options' },
+      { title: 'Types', href: '/types' },
+      // { title: 'Convenience methods', href: '/convenience-methods' },
+      // { title: 'Preapprovals', href: '/preapprovals' },
     ],
   },
 ]
