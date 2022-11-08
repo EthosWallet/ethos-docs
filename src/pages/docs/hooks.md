@@ -5,52 +5,60 @@ description: React hooks for interacting with the wallet
 
 EthosConnect ships with hooks to interact with the wallet and Sui blockchain.
 
-NOTE make useWallet - same iterface as mysten but remove adapters, wallets, select. Add in useWalletContents and useAddress. Can also get signer from this. Also replace signAndExecuteTransaction with `transact`. Also `signTransaction` convenience method
-
-https://github.com/MystenLabs/sui/blob/main/sdk/wallet-adapter/packages/react-providers/src/WalletContext.tsx
-
 ---
 
-## `useWallet`
+# `useWallet`
 
-These hooks give you information about the user's wallet. Click the name of each to jump to an example of its implementation.
+Thos hook gives you information about the user's wallet. Click the name of each to jump to an example of its implementation.
 
 [comment]: <> (@dev Here's a handy markdown table generator: https://www.tablesgenerator.com/markdown_tables)
 
-| Property                                                            | Return type                               | Description                                                                                                                   |
-|---------------------------------------------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| [`connected`](hooks#connected-and-connecting)                       | `boolean`                                 | Wallet is connected. Returns false while connection is loading.                                                               |
-| [`connecting`](hooks#connected-and-connecting)                      | `boolean`                                 | EthosConnect is in the process of detecting if the users has a connected wallet.                                              |
-| `disconnect()`                                                      | `Promise<void>`                           | Method to disconnect the user's wallet from this site. The Logout button of the `WalletWidget` component has this by default. |
-| [`address`](hooks#address)                                          | `SuiAddress`                              | The user's wallet address                                                                                                     |
-| `getAccounts()`                                                     | `Promise<SuiAddress[]>`                   | Gets the user's connected wallet addresses. The first item in the array is the connected wallet.                              |
-| [`contents`](hooks#contents)                                        | [`WalletContents`](types#wallet-contents) |                                                                                                                               |
-| [`signAndExecuteTransaction()`](hooks#sign-and-execute-transaction) | `Promise<SuiTransactionResponse>`         | Takes a single `SignableTransaction` param and calls a Sui contract.                                                          |
-| [`signTransaction()`](hooks#sign-transaction)                       | `Promise<SuiTransactionResponse>`         | Takes a single `SignableTransaction` param and prompts the user to sign the given transaction.                                |
+| Property                     | Return type                                        | Description                                                                                                                                                                                                                                                                    |
+|------------------------------|----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`provider`](hooks#provider) | [`JsonRpcProvider`](types#json-rpc-provider)         | A read-only connection to the Sui blockchain.                                                                                                                                                                                                                                  |
+| [`status`](hooks#status)     | [`EthosConnectStatus`](types#ethos-connect-status) | Wallet connection status. `loading` means EthosConnect is searching for a cached wallet. `no_connection` means the search is complete, and no connected wallet was found. `connected` means that a wallet has been successfully connected and the `wallet` object may be used. |
+| [`wallet`](hooks#wallet)     | [`Wallet`](types#wallet)                           | EthosConnect is in the process of detecting if the users has a connected wallet.                                                                                                                                                                                               |
 
-### `connected` and `connecting`
+---
 
-The `connected` and `connecting` objects can be used in conjunction to tell you if a wallet is connected to your site or if EthosConnect is in the process of detecting if the users has a connected wallet.
+## `provider`
+
+The `provider` is your read-only connection to the blockchain. You can see objects owned by an address, read transactions, and more. Full documentation from [@mysten/sui.js](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/classes/Provider.html).
+
+---
+
+## `status`
+
+The `status` object can be used to tell you if a wallet is connected to your site or if EthosConnect is in the process of detecting if the users has a connected wallet.
+
+`status` returns one of three possible states of the `EthosConnectStatus`](types#ethos-connect-status) enum:
+
+- `loading`
+- `no_connection`
+- `connected`
+
+They can be used like so:
 
 ```js
-import { useWallet, SignInButton } from 'ethos-connect'
+import { useWallet, SignInButton, type EthosConnectStatus } from 'ethos-connect'
 
 function App() {
-  const { connected, connecting } = useWallet()
+  const { status } = useWallet()
 
   return (
     <>
-      {connecting ? (
+      {status === EthosConnectStatus.Loading ? (
         <div>Loading...</div>
-      ) : connected ? (
-        <div>
-          Wallet connected
-          <TheRestOfTheApp />
-        </div>
-      ) : (
+      ) : status === EthosConnectStatus.NoConnection ? (
         <div>
           No wallet connected
           <SignInButton />
+        </div>
+      ) : (
+        // status is EthosConnectStatus.Connected
+        <div>
+          Wallet connected
+          <TheRestOfTheApp />
         </div>
       )}
     </>
@@ -58,112 +66,185 @@ function App() {
 }
 ```
 
-### `address`
+---
 
-The `address` property will give you the current wallet's address
+## `wallet`
+
+The `wallet` object is what is used for the majority of calls related to the user's wallet.
+
+### `wallet.address`
+
+A synchronous call to get the connected wallet's address.
 
 ```js
 import { useWallet } from 'ethos-connect'
 
 function App() {
-  const { address } = useWallet()
+  const { wallet } = useWallet()
 
-  return <div>Address: {address}</div>
+  return <div>Address: {wallet?.address}</div>
 }
 ```
 
-### `contents`
+### `wallet.contents`
 
-The `contents` property will tell you the user's SUI balance and what coins and NFTs are in the user's wallet.
+Used to get the wallet's SUI balance, other token balance, and NFTs. Returns an object of type [`WalletContents`](types#wallet-contents).
 
 ```js
 import { useWallet } from 'ethos-connect'
 
 function App() {
-  const { contents } = useWallet()
-  const { suiBalance, coins, nfts } = contents
+  const { wallet } = useWallet()
 
   return (
-    <>
-      <div>Balance: {suiBalance}</div>
-      <div>
-        {coins.map((coin) => {
-          return (
-            <span>
-              {coin.name}: {coin.balance}
-            </span>
-          )
-        })}
-      </div>
-      <div>
-        {nfts.map((nft) => {
-          return <img src={nft.src} alt={nft.name} />
-        })}
-      </div>
-    </>
+    <div>
+      Balance: {wallet?.contents.suiBalance}
+      Tokens: {
+        for (let tokenName in wallet?.contents.tokens) {
+          let value = wallet?.contents.tokens[tokenName];
+          return (<>
+            {tokenName}: {value.balance}
+          </>)
+      }
+      }
+      Balance: {
+        wallet?.contents.nfts.map((nft) => {
+          return <>
+            {nft.name}
+            {nft.description}
+          </>
+        })
+      }
+    </div>
   )
 }
 ```
 
-### `signAndExecuteTransaction`
+### `wallet.disconnect()`
 
-Given the details of your contract, `signAndExecuteTransaction` will call the function and module.
-
-```js
-import { useWallet } from 'ethos-connect'
-
-function App() {
-  const { signAndExecuteTransaction } = useWallet()
-
-  const mintDetails = {
-    network: 'devNet',
-    address: '0xd21d2fb75eb88b945c7ea30d96ec6040463e15cd',
-    moduleName: 'game_8192',
-    functionName: 'create',
-    inputValues: [],
-    gasBudget: 5000,
-  }
-
-  const mint = useCallback(() => {
-    return signAndExecuteTransaction(mintDetails)
-  }, [signAndExecuteTransaction])
-
-  return <button onClick={mint}>
-    Mint
-  </div>
-}
-```
-
-The return object will be of type `Transaction` and look like this:
-
-{% callout title="RETURN TYPE NOT IMPLEMENTED" / %}
-
----
-
-### `signTransaction`
-
-The `signTransaction` method will prompt the user to sign a given transaction.
-
-{% callout title="PARAM TYPE NOT IMPLEMENTED" / %}
+Disconnects the user's wallet. Returns `void`.
 
 ```js
 import { useWallet } from 'ethos-connect'
 
 function App() {
-  const { signTransaction } = useWallet()
+  const { wallet } = useWallet()
 
-  const unsignedTransaction = {...}
-
-  const mint = useCallback(() => {
-    return signTransaction(unsignedTransaction)
-  }, [signTransaction])
-
-  return <button onClick={mint}>
-    Sign
-  </div>
+  return (
+    <button
+      onClick={wallet.disconnect}
+    >
+      Sign Out
+    </button>
+  )
 }
 ```
 
-The return object will be of type `Transaction` and look like this:
+### `wallet.signAndExecuteTransaction()`
 
-{% callout title="RETURN TYPE NOT IMPLEMENTED" / %}
+Used to sign and submit a transaction to the blockchain. Takes a [`SignableTransaction`](https://github.com/MystenLabs/sui/blob/e45b188a80a067700efdc5a099745f18e1f41aac/sdk/typescript/src/signers/txn-data-serializers/txn-data-serializer.ts#L137) and returns a [`Promise<SuiTransactionResponse>`](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/modules.html#SuiTransactionResponse).
+
+```js
+import { useWallet } from 'ethos-connect'
+
+function App() {
+  const { wallet } = useWallet()
+
+  const mint = useCallback(async () => {
+    if (!wallet) return;
+
+    try {
+      const signableTransaction = {
+        kind: "moveCall" as const,
+        data: {
+          packageObjectId: contractAddress,
+          module: 'devnet_nft',
+          function: 'mint',
+          typeArguments: [],
+          arguments: [
+            "Example NFT Name",
+            'This is a description',
+            'https://ethoswallet.xyz/assets/images/ethos-email-logo.png'
+          ],
+          gasBudget: 10000
+        }
+      };
+
+      wallet.signAndExecuteTransaction(signableTransaction)
+    } catch (error) {
+      console.log(error);
+    }
+  }, [wallet]);
+
+  return <>...</>
+}
+```
+
+### `wallet.requestPreapproval()`
+
+As blockchain games are becoming more on-chain and on-chain interactions less expensive, it becomes sluggish to request the user to sign each individual transaction. Some wallets, ([Ethos Wallet](ethoswallet.xyz)) being the first, allow for users to safely preapprove transactions. This allows the app to sign multiple transactions within a strict set of guidelines.
+
+Learn more in our [blog post about preapproving transactions](https://medium.com/@ethoswallet/why-we-built-on-sui-part-3-complex-nfts-are-the-future-of-apps-f6c2a4963fab) and our fully on-chain game, [Sui 8192](https://ethoswallet.github.io/Sui8192/)
+
+Takes a [`Preapproval`](types#preapproval) and returns a `Promise<boolean>` denoting if the user accepted the request.
+
+```js
+import { useWallet } from 'ethos-connect'
+
+function App() {
+  const { wallet } = useWallet()
+
+  const mint = useCallback(async () => {
+    if (!wallet) return
+
+    try {
+      const result = await wallet.preapprove({
+        signer: walletSigner,
+        preapproval: {
+          packageObjectId: contractAddress,
+          objectId: activeGameAddress,
+          module: 'game_8192',
+          function: 'make_move',
+          description:
+            'Pre-approve moves in the game so you can play without signing every transaction.',
+          totalGasLimit: 500000,
+          maxTransactionCount: 25,
+        },
+      })
+
+      preapproval = result.approved
+    } catch (e) {
+      console.log('Error requesting preapproval', e)
+      preapproval = false
+    }
+  }, [wallet])
+
+  return <>...</>
+}
+```
+
+### `wallet.sign()`
+
+Prompts the user to sign a message.
+
+```js
+import { useWallet } from 'ethos-connect'
+
+function App() {
+  const { wallet } = useWallet()
+
+  const mint = useCallback(async () => {
+    if (!wallet) return
+
+    try {
+      const result = await wallet.sign({
+        message: 'sign me!',
+      })
+    } catch (e) {
+      console.log('Error signing message', e)
+    }
+  }, [wallet])
+
+  return <>...</>
+}
+```
