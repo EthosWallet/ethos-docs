@@ -51,6 +51,22 @@ function GitHubIcon(props) {
   )
 }
 
+function TwitterIcon(props) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" {...props}>
+      <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+    </svg>
+  )
+}
+
+const ArrowTopRightIcon = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+    </svg>
+  )
+}
+
 function Header({ navigation }) {
   let [isScrolled, setIsScrolled] = useState(false)
 
@@ -77,11 +93,17 @@ function Header({ navigation }) {
       <div className="mr-6 flex lg:hidden">
         <MobileNavigation navigation={navigation} />
       </div>
-      <div className="relative flex flex-grow basis-0 items-center">
+      <div className="relative flex flex-grow basis-0 items-center gap-2 sm:gap-8">
         <Link href="/" aria-label="Docs Home page" className='flex flex-row gap-2'>
           <Logomark className="h-9 w-9 lg:hidden" />
           <Logo className="hidden h-9 w-auto fill-slate-700 dark:fill-violet-100 lg:block" />
         </Link>
+        <a href="https://ethoswallet.xyz" target='_blank' rel='noreferrer' className='hidden sm:flex gap-1 items-center underline'>
+          <span>
+            Ethos Wallet
+          </span>
+          <ArrowTopRightIcon />
+        </a>
       </div>
       <div className="-my-5 mr-6 sm:mr-8 md:mr-0">
         {/* <Search /> */}
@@ -90,6 +112,9 @@ function Header({ navigation }) {
         <ThemeSelector className="relative z-10" />
         <Link href="https://github.com/EthosWallet/ethos-connect" className="group" aria-label="GitHub" target='_blank' rel='noopener noreferrer'>
           <GitHubIcon className="h-6 w-6 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
+        </Link>
+        <Link href="https://twitter.com/EthosWalletXYZ" className="group" aria-label="Twitter" target='_blank' rel='noopener noreferrer'>
+          <TwitterIcon className="h-6 w-6 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
         </Link>
       </div>
     </header>

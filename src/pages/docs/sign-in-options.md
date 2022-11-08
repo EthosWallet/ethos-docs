@@ -24,3 +24,24 @@ const App = () => {
   );
 };
 ```
+---
+
+## Showing email sign in
+
+In order to have access to the email sign-in functionality, you must first register an API key.
+
+Please [contact us](mailto:support@ethoswallet.xyz) to get an API key.
+
+```js
+import { EthosConnectProvider } from 'ethos-connect';
+
+const App = () => {
+  return (
+    <EthosConnectProvider
+        ethosConfiguration={ apiKey: 'your-api-key'}
+    >
+      <YourApp />
+    <EthosConnectProvider />
+  );
+};
+```
