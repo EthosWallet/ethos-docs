@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import Image from 'next/future/image'
 import clsx from 'clsx'
 import Highlight, { defaultProps } from 'prism-react-renderer'
-import { EthosWrapper } from 'ethos-connect';
+import { EthosConnectProvider } from 'ethos-connect';
 import { Button } from '@/components/Button'
 import { HeroBackground } from '@/components/HeroBackground'
 import blurCyanImage from '@/images/blur-cyan.png'
@@ -35,9 +35,9 @@ function TrafficLightsIcon(props) {
   )
 }
 
-export function Hero({ hideEmail, setHideEmail }) {
+export function Hero() {
   return (
-    <EthosWrapper
+    <EthosConnectProvider
       ethosConfiguration={{
         walletAppUrl: '',
         appId: 'ethos',
@@ -106,7 +106,7 @@ export function Hero({ hideEmail, setHideEmail }) {
                   <div className="absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-violet-300/0 via-violet-300/70 to-violet-300/0" />
                   <div className="absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-purple-400/0 via-purple-400 to-purple-400/0" />
                   <div className='px-4 py-4 h-72'>
-                    <TryItOut hideEmail={hideEmail} setHideEmail={setHideEmail} />
+                    <TryItOut />
                   </div>
                   {/* <div className="pl-4 pt-4">
                   <TrafficLightsIcon className="h-2.5 w-auto stroke-slate-500/30" />
@@ -189,6 +189,6 @@ export function Hero({ hideEmail, setHideEmail }) {
           </div>
         </div>
       </div>
-    </EthosWrapper>
+    </EthosConnectProvider>
   )
 }

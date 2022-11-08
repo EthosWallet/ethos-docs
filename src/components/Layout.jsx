@@ -139,7 +139,6 @@ function useTableOfContents(tableOfContents) {
   return currentSection
 }
 
-// export function Layout({ children, title, tableOfContents, hideEmail, setHideEmail }) {
 export function Layout({ children, title, tableOfContents }) {
   let router = useRouter()
   let isHomePage = router.pathname === '/'
@@ -162,23 +161,11 @@ export function Layout({ children, title, tableOfContents }) {
     return section.children.findIndex(isActive) > -1
   }
 
-  const [hideEmail, setHideEmail] = useState(false);
-  const handleClick = useCallback(() => {
-    console.log('click');
-    setHideEmail(!hideEmail)
-  }, [hideEmail])
-
   return (
     <>
       <Header navigation={navigation} />
 
-      {/* hideEmail: {hideEmail ? 'true' : 'false'}
-      <br />
-      <button onClick={handleClick}>
-        Toggle
-      </button> */}
-
-      {isHomePage && <Hero hideEmail={hideEmail} setHideEmail={setHideEmail} />}
+      {isHomePage && <Hero />}
 
       <div className="relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12">
         <div className="hidden lg:relative lg:block lg:flex-none">

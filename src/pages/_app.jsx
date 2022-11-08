@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Head from 'next/head'
 import { slugifyWithCounter } from '@sindresorhus/slugify'
 
@@ -6,7 +6,6 @@ import { Layout } from '@/components/Layout'
 
 import 'focus-visible'
 import '@/styles/tailwind.css'
-import { useCallback } from 'react';
 
 function getNodeText(node) {
   let text = ''
@@ -63,50 +62,15 @@ export default function App({ Component, pageProps }) {
     ? collectHeadings(pageProps.markdoc.content)
     : []
 
-  const [hideEmail, setHideEmail] = useState(false);
-
-  const handleClick = useCallback(() => {
-    console.log('click');
-    setHideEmail(!hideEmail)
-  }, [hideEmail])
-
-  const ethosConfiguration = {
-    appId: 'ethos-docs',
-    hideEmailOption: hideEmail
-  }
-  const onWalletConnected = (provider, signer) => {
-    console.log('provider :>> ', provider);
-    console.log('signer :>> ', signer);
-    // your code, probably updating component state with the signer
-  }
-
   return (
-    // <EthosWrapper
-    //   ethosConfiguration={{
-    //     walletAppUrl: '',
-    //     appId: 'ethos',
-    //   }}
-    //   dappName="Your dApp&apos;s Name"
-    //   // dappIcon={<EthosLogo />}
-    //   connectMessage={<div>Your connect message!</div>}
-    // >
       <>
         <Head>
           <title>{pageTitle}</title>
           {description && <meta name="description" content={description} />}
         </Head>
-        <Layout title={title} tableOfContents={tableOfContents} hideEmail={hideEmail} setHideEmail={setHideEmail}>
+        <Layout title={title} tableOfContents={tableOfContents}>
           <Component {...pageProps} />
         </Layout>
       </>
-
-      // hideEmail: {hideEmail ? 'true' : 'false'}
-      // <br />
-      // <button onClick={handleClick}>
-      //   toggle
-      // </button>
-
-    // {/* </EthosWrapper> */}
-
   )
 }

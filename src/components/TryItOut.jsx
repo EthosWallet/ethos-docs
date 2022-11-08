@@ -1,14 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 
 import { SignInButton } from 'ethos-connect';
 
 
-const TryItOut = ({hideEmail, setHideEmail}) => {
-    const onHandleSavedPhrase = useCallback((event) => {
-        const checked = event.target.checked;
-        console.log('checked :>> ', checked);
-        setHideEmail(!checked);
-    }, [setHideEmail]);
+const TryItOut = () => {
 
     return (
         <div>
@@ -24,12 +19,6 @@ const TryItOut = ({hideEmail, setHideEmail}) => {
                 </div>
             </div>
             <div className='grid place-items-center h-60'>
-                {/* <Checkbox
-                    label='show email option'
-                    id='email-option'
-                    onChange={onHandleSavedPhrase}
-                    checked={!hideEmail}
-                /> */}
                 <SignInButton className='rounded-full bg-[#6D28D9] py-2 px-4 text-sm font-semibold text-white' />
             </div>
         </div>
