@@ -16,7 +16,7 @@ Ethos is a Rect library that makes it easy to connect a wallet to your dApp on S
 
 {% quick-link title="Advanced API reference" icon="plugins" href="/docs/hooks" description="Leverage the API to give your users a tailored experience." /%}
 
-{% quick-link title="Theme options" icon="theming" href="/docs/theming" description="Match the Ethos connect flow with the theme of your app." /%}
+{% quick-link title="Theme options" icon="theming" href="/docs/customization" description="Match the Ethos connect flow with the theme of your app." /%}
 
 {% /quick-links %}
 
