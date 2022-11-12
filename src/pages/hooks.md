@@ -88,7 +88,17 @@ function App() {
 
 ### `wallet.contents`
 
-Used to get the wallet's SUI balance, other token balance, and NFTs. Returns an object of type [`WalletContents`](types#wallet-contents).
+Used to get the wallet's SUI balance, other token balance, and NFTs. Returns an object of type [`WalletContents`](types#wallet-contents). The `contents` will update every few seconds providing
+up-to-date information about the contents of the connected wallet.
+
+The contents includes:
+
+`suiBalance` - The total amount of Mist (the lowest denomination of Sui) in the connected wallet.
+
+`tokens` - A breakdown of all tokens in the connected wallet. Presented as a map with the token name
+as the key and an object with list of `coins` and the overall `balance` as the value for each token.
+
+`nfts` - An array of all non-coin objects in the connected wallet.
 
 ```js
 import { ethos } from 'ethos-connect'
@@ -98,19 +108,21 @@ function App() {
 
   if (!wallet) return <></>
 
+  const { suiBalance, tokens, nfts } = wallet.contents;
+
   return (
     <div>
-      Balance: {wallet.contents.suiBalance}
+      Balance: {suiBalance}
       Tokens: {
-        for (let tokenName in wallet.contents.tokens) {
-          let value = wallet.contents.tokens[tokenName];
+        for (let tokenName in tokens) {
+          let token = tokens[tokenName];
           return (<>
-            {tokenName}: {value.balance}
+            {tokenName}: {token.balance}
           </>)
-      }
+        }
       }
       Balance: {
-        wallet.contents.nfts.map((nft) => {
+        nfts.map((nft) => {
           return <>
             {nft.name}
             {nft.description}
