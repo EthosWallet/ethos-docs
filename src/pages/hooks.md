@@ -96,19 +96,21 @@ import { ethos } from 'ethos-connect'
 function App() {
   const { wallet } = ethos.useWallet()
 
+  if (!wallet) return <></>
+
   return (
     <div>
-      Balance: {wallet?.contents.suiBalance}
+      Balance: {wallet.contents.suiBalance}
       Tokens: {
-        for (let tokenName in wallet?.contents.tokens) {
-          let value = wallet?.contents.tokens[tokenName];
+        for (let tokenName in wallet.contents.tokens) {
+          let value = wallet.contents.tokens[tokenName];
           return (<>
             {tokenName}: {value.balance}
           </>)
       }
       }
       Balance: {
-        wallet?.contents.nfts.map((nft) => {
+        wallet.contents.nfts.map((nft) => {
           return <>
             {nft.name}
             {nft.description}
