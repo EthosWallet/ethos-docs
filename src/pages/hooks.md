@@ -40,10 +40,10 @@ The `status` object can be used to tell you if a wallet is connected to your sit
 They can be used like so:
 
 ```js
-import { useWallet, SignInButton, type EthosConnectStatus } from 'ethos-connect'
+import { ethos, SignInButton, type EthosConnectStatus } from 'ethos-connect'
 
 function App() {
-  const { status } = useWallet()
+  const { status } = ethos.useWallet()
 
   return (
     <>
@@ -77,10 +77,10 @@ The `wallet` object is what is used for the majority of calls related to the use
 A synchronous call to get the connected wallet's address.
 
 ```js
-import { useWallet } from 'ethos-connect'
+import { ethos } from 'ethos-connect'
 
 function App() {
-  const { wallet } = useWallet()
+  const { wallet } = ethos.useWallet()
 
   return <div>Address: {wallet?.address}</div>
 }
@@ -91,10 +91,10 @@ function App() {
 Used to get the wallet's SUI balance, other token balance, and NFTs. Returns an object of type [`WalletContents`](types#wallet-contents).
 
 ```js
-import { useWallet } from 'ethos-connect'
+import { ethos } from 'ethos-connect'
 
 function App() {
-  const { wallet } = useWallet()
+  const { wallet } = ethos.useWallet()
 
   return (
     <div>
@@ -125,10 +125,10 @@ function App() {
 Disconnects the user's wallet. Returns `void`.
 
 ```js
-import { useWallet } from 'ethos-connect'
+import { ethos } from 'ethos-connect'
 
 function App() {
-  const { wallet } = useWallet()
+  const { wallet } = ethos.useWallet()
 
   return (
     <button
@@ -145,10 +145,10 @@ function App() {
 Used to sign and submit a transaction to the blockchain. Takes a [`SignableTransaction`](https://github.com/MystenLabs/sui/blob/e45b188a80a067700efdc5a099745f18e1f41aac/sdk/typescript/src/signers/txn-data-serializers/txn-data-serializer.ts#L137) and returns a [`Promise<SuiTransactionResponse>`](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/modules.html#SuiTransactionResponse).
 
 ```js
-import { useWallet } from 'ethos-connect'
+import { ethos } from 'ethos-connect'
 
 function App() {
-  const { wallet } = useWallet()
+  const { wallet } = ethos.useWallet()
 
   const mint = useCallback(async () => {
     if (!wallet) return;
@@ -189,10 +189,10 @@ Learn more in our [blog post about preapproving transactions](https://medium.com
 Takes a [`Preapproval`](types#preapproval) and returns a `Promise<boolean>` denoting if the user accepted the request.
 
 ```js
-import { useWallet } from 'ethos-connect'
+import { ethos } from 'ethos-connect'
 
 function App() {
-  const { wallet } = useWallet()
+  const { wallet } = ethos.useWallet()
 
   const mint = useCallback(async () => {
     if (!wallet) return
@@ -228,10 +228,10 @@ function App() {
 Prompts the user to sign a message.
 
 ```js
-import { useWallet } from 'ethos-connect'
+import { ethos } from 'ethos-connect'
 
 function App() {
-  const { wallet } = useWallet()
+  const { wallet } = ethos.useWallet()
 
   const mint = useCallback(async () => {
     if (!wallet) return

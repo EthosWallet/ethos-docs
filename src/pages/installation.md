@@ -33,7 +33,9 @@ import { EthosConnectProvider } from 'ethos-connect';
 const App = () => {
   return (
     <EthosConnectProvider
-      hideEmailSignIn={true} // defaults to false
+      ethosConfiguration={{
+        hideEmailSignIn: true // defaults to false
+      }} 
     >
       <YourApp />
     <EthosConnectProvider />
