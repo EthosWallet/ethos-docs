@@ -97,6 +97,7 @@ The contents includes:
 
 `tokens` - A breakdown of all tokens in the connected wallet. Presented as a map with the token name
 as the key and an object with list of `coins` and the overall `balance` as the value for each token.
+Example: `{ "0x2::sui::SUI": { balance: 500000, coins: [...] }}`
 
 `nfts` - An array of all non-coin objects in the connected wallet.
 
