@@ -14,8 +14,8 @@ This hook gives you information about the user's wallet. Click the name of each 
 [comment]: <> (@dev Here's a handy markdown table generator: https://www.tablesgenerator.com/markdown_tables)
 
 | Property                     | Return type                                        | Description                                                                                                                                                                                                                                                                    |
-|------------------------------|----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`provider`](hooks#provider) | [`JsonRpcProvider`](types#json-rpc-provider)         | A read-only connection to the Sui blockchain.                                                                                                                                                                                                                                  |
+| ---------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [`provider`](hooks#provider) | [`JsonRpcProvider`](types#json-rpc-provider)       | A read-only connection to the Sui blockchain.                                                                                                                                                                                                                                  |
 | [`status`](hooks#status)     | [`EthosConnectStatus`](types#ethos-connect-status) | Wallet connection status. `loading` means EthosConnect is searching for a cached wallet. `no_connection` means the search is complete, and no connected wallet was found. `connected` means that a wallet has been successfully connected and the `wallet` object may be used. |
 | [`wallet`](hooks#wallet)     | [`Wallet`](types#wallet)                           | EthosConnect is in the process of detecting if the users has a connected wallet.                                                                                                                                                                                               |
 
@@ -97,6 +97,7 @@ The contents includes:
 
 `tokens` - A breakdown of all tokens in the connected wallet. Presented as a map with the token name
 as the key and an object with list of `coins` and the overall `balance` as the value for each token.
+
 Example: `{ "0x2::sui::SUI": { balance: 500000, coins: [...] }}`
 
 `nfts` - An array of all non-coin objects in the connected wallet.
@@ -145,13 +146,7 @@ import { ethos } from 'ethos-connect'
 function App() {
   const { wallet } = ethos.useWallet()
 
-  return (
-    <button
-      onClick={wallet.disconnect}
-    >
-      Sign Out
-    </button>
-  )
+  return <button onClick={wallet.disconnect}>Sign Out</button>
 }
 ```
 
