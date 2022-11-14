@@ -59,3 +59,13 @@ export interface Preapproval {
   maxTransactionCount: number;
 }
 ```
+
+### `AddressWidgetProps`
+
+```js
+export interface AddressWidgetProps {
+  includeMenu?: boolean;
+  buttonColor?: string;
+  extraButtons?: ReactNode[];
+}
+```

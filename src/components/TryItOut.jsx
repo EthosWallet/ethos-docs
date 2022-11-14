@@ -39,7 +39,12 @@ const TryItOut = () => {
             <div className='grid place-items-center h-60'>
                 {addressWidget ? (
                     <div>
-                        <ethos.components.AddressWidget />
+                        <ethos.components.AddressWidget 
+                          excludeButtons={[
+                            ethos.enums.AddressWidgetButtons.CopyWalletAddress,
+                            ethos.enums.AddressWidgetButtons.Logout,
+                          ]}
+                        />
                         {wallet && (
                             <div className='text-xs text-center text-white p-3'>(mouse over me)</div>
                         )}
