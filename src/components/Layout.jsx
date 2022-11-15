@@ -35,6 +35,8 @@ const navigation = [
     title: 'API reference',
     links: [
       { title: 'Hooks', href: '/hooks' },
+      { title: 'Components', href: '/components' },
+      { title: 'Utility functions', href: '/util' },
       { title: 'Sign in options', href: '/sign-in-options' },
       { title: 'Types', href: '/types' },
       // { title: 'Convenience methods', href: '/convenience-methods' },

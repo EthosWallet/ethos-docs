@@ -35,7 +35,7 @@ const App = () => {
     <EthosConnectProvider
       ethosConfiguration={{
         hideEmailSignIn: true // defaults to false
-      }} 
+      }}
     >
       <YourApp />
     <EthosConnectProvider />

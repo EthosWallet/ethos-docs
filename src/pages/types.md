@@ -14,10 +14,20 @@ From [`@mysten/sui.js`](http://typescript-sdk-docs.s3-website-us-east-1.amazonaw
 ### `EthosConnectStatus`
 
 ```js
-type EthosConnectStatus = {
+enum EthosConnectStatus = {
     Loading = "loading",
     NoConnection = "no_connection",
     Connected = "connected"
+}
+```
+
+### `AddressWidgetButtons`
+
+```js
+enum AddressWidgetButtons {
+    CopyWalletAddress = "copy_wallet_address",
+    WalletExplorer = "wallet_explorer",
+    Logout = "logout"
 }
 ```
 
@@ -49,7 +59,7 @@ interface WalletContents = {
 ### `Preapproval`
 
 ```js
-export interface Preapproval {
+interface Preapproval {
   module: string;
   function: string;
   objectId: ObjectId;
@@ -57,5 +67,15 @@ export interface Preapproval {
   totalGasLimit: number;
   perTransactionGasLimit: number;
   maxTransactionCount: number;
+}
+```
+
+### `AddressWidgetProps`
+
+```js
+interface AddressWidgetProps {
+  includeMenu?: boolean;
+  buttonColor?: string;
+  extraButtons?: ReactNode[];
 }
 ```
