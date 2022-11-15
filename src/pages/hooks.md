@@ -216,8 +216,8 @@ Takes a [`Preapproval`](types#preapproval) and returns a `Promise<boolean>` deno
 - `module`: The module name that contains the function you are calling.
 - `function`: The name of the function you want to call.
 - `description`: A description of what the function will do.
-- `totalGasLimit`: A default gas limit (once this amount of gas is spent the user will be prompted to re-preapprove transactions). The user can change this.
-- `maxTransactionCount`: A default for the maximum number of transactions that can be completed before the user is prompted to re-preapprove more transactions. The user can change this.
+- `totalGasLimit`: A default gas limit (once this amount of gas is spent the user will be prompted to re-preapprove transactions). The user can change this value.
+- `maxTransactionCount`: A default for the maximum number of transactions that can be completed before the user is prompted to re-preapprove more transactions. The user can change this value.
 
 ```js
 import { ethos } from 'ethos-connect'
