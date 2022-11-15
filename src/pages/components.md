@@ -7,7 +7,7 @@ EthosConnect Components make it easy to assemble the basic building blocks for a
 
 ---
 
-# `AddressWidget`
+## `AddressWidget`
 
 The `ethos.components.AddressWidget` is a dynamic widget that provides:
 

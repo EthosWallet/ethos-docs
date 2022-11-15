@@ -40,7 +40,7 @@ The `status` object can be used to tell you if a wallet is connected to your sit
 They can be used like so:
 
 ```js
-import { ethos, SignInButton, type EthosConnectStatus } from 'ethos-connect'
+import { ethos, SignInButton, EthosConnectStatus } from 'ethos-connect'
 
 function App() {
   const { status } = ethos.useWallet()
@@ -123,7 +123,7 @@ function App() {
           </>)
         }
       }
-      Balance: {
+      NFTs: {
         nfts.map((nft) => {
           return <>
             {nft.name}
@@ -154,37 +154,50 @@ function App() {
 
 Used to sign and submit a transaction to the blockchain. Takes a [`SignableTransaction`](https://github.com/MystenLabs/sui/blob/e45b188a80a067700efdc5a099745f18e1f41aac/sdk/typescript/src/signers/txn-data-serializers/txn-data-serializer.ts#L137) and returns a [`Promise<SuiTransactionResponse>`](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/modules.html#SuiTransactionResponse).
 
+This function is frequently used in dApps and is evolving on the Sui blockchain. The best sources of information for each type of call are below. In each case camelCase should be used for the parameter name (e.g. `packageObjectId` instead of `package_object_id`)
+
+- `moveCall`: [parameters](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/interfaces/MoveCallTransaction.html), [description](https://docs.sui.io/sui-jsonrpc#sui_moveCall)
+- `mergeCoins`: [parameters](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/interfaces/MergeCoinTransaction.html), [description](https://docs.sui.io/sui-jsonrpc#sui_mergeCoins)
+- `splitCoin`: [parameters](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/interfaces/SplitCoinTransaction.html), [description](https://docs.sui.io/sui-jsonrpc#sui_splitCoin)
+- `transferObject`: [parameters](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/interfaces/TransferObjectTransaction.html), [description](https://docs.sui.io/sui-jsonrpc#sui_transferObject)
+- `transferSui`: [parameters](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/interfaces/TransferSuiTransaction.html), [description](https://docs.sui.io/sui-jsonrpc#sui_transferSui)
+- `pay`: [description](https://docs.sui.io/sui-jsonrpc#sui_pay)
+- `paySui`: [description](https://docs.sui.io/sui-jsonrpc#sui_paySui)
+- `payAllSui`: [description](https://docs.sui.io/sui-jsonrpc#sui_payAllSui)
+
 ```js
+import { useCallback } from 'react'
 import { ethos } from 'ethos-connect'
 
 function App() {
+  const contractAddress = '0x0000000000000000000000000000000000000002'
   const { wallet } = ethos.useWallet()
 
   const mint = useCallback(async () => {
-    if (!wallet) return;
+    if (!wallet) return
 
     try {
       const signableTransaction = {
-        kind: "moveCall" as const,
+        kind: 'moveCall',
         data: {
           packageObjectId: contractAddress,
           module: 'devnet_nft',
           function: 'mint',
           typeArguments: [],
           arguments: [
-            "Example NFT Name",
+            'Example NFT Name',
             'This is a description',
-            'https://ethoswallet.xyz/assets/images/ethos-email-logo.png'
+            'https://ethoswallet.xyz/assets/images/ethos-email-logo.png',
           ],
-          gasBudget: 10000
-        }
-      };
+          gasBudget: 10000,
+        },
+      }
 
       wallet.signAndExecuteTransaction(signableTransaction)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  }, [wallet]);
+  }, [wallet])
 
   return <>...</>
 }
