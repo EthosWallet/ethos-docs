@@ -1,9 +1,9 @@
 ---
 title: Utility Functions
-description: Utility functions for common use cases when building in Sui.
+description: Utility functions for common use cases when building on Sui.
 ---
 
-EthosConnect provides a variety of utility functions that you might find useful while developing.
+EthosConnect provides a variety of utility functions that you might find useful while developing on Sui.
 
 ---
 
