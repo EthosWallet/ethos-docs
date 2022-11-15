@@ -178,7 +178,7 @@ function App() {
 
     try {
       const signableTransaction = {
-        kind: 'moveCall',
+        kind: 'moveCall' as const,
         data: {
           packageObjectId: contractAddress,
           module: 'devnet_nft',
