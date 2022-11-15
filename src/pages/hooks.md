@@ -209,7 +209,15 @@ As blockchain games are becoming more on-chain and on-chain interactions less ex
 
 Learn more in our [blog post about preapproving transactions](https://medium.com/@ethoswallet/why-we-built-on-sui-part-3-complex-nfts-are-the-future-of-apps-f6c2a4963fab) and our fully on-chain game, [Sui 8192](https://ethoswallet.github.io/Sui8192/)
 
-Takes a [`Preapproval`](types#preapproval) and returns a `Promise<boolean>` denoting if the user accepted the request.
+Takes a [`Preapproval`](types#preapproval) and returns a `Promise<boolean>` denoting if the user accepted the request. The parameters are:
+
+- `packageObjectId`: The objectId of the package you are calling.
+- `objectId`: The objectId of the object that will be mutated.
+- `module`: The module name that contains the function you are calling.
+- `function`: The name of the function you want to call.
+- `description`: A description of what the function will do.
+- `totalGasLimit`: A default gas limit (once this amount of gas is spent the user will be prompted to re-preapprove transactions). The user can change this.
+- `maxTransactionCount`: A default for the maximum number of transactions that can be completed before the user is prompted to re-preapprove more transactions. The user can change this.
 
 ```js
 import { ethos } from 'ethos-connect'
@@ -217,22 +225,19 @@ import { ethos } from 'ethos-connect'
 function App() {
   const { wallet } = ethos.useWallet()
 
-  const mint = useCallback(async () => {
+  const preapprove = useCallback(async () => {
     if (!wallet) return
 
     try {
-      const result = await wallet.preapprove({
-        signer: walletSigner,
-        preapproval: {
-          packageObjectId: contractAddress,
-          objectId: activeGameAddress,
-          module: 'game_8192',
-          function: 'make_move',
-          description:
-            'Pre-approve moves in the game so you can play without signing every transaction.',
-          totalGasLimit: 500000,
-          maxTransactionCount: 25,
-        },
+      const result = await wallet.requestPreapproval({
+        packageObjectId: contractAddress,
+        objectId: activeGameAddress,
+        module: 'game_8192',
+        function: 'make_move',
+        description:
+          'Pre-approve moves in the game so you can play without signing every transaction.',
+        totalGasLimit: 500000,
+        maxTransactionCount: 25,
       })
 
       preapproval = result.approved
@@ -256,7 +261,7 @@ import { ethos } from 'ethos-connect'
 function App() {
   const { wallet } = ethos.useWallet()
 
-  const mint = useCallback(async () => {
+  const sign = useCallback(async () => {
     if (!wallet) return
 
     try {
