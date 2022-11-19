@@ -72,6 +72,14 @@ function App() {
 
 The `wallet` object is what is used for the majority of calls related to the user's wallet.
 
+### `wallet.name`
+
+The name provided by the wallet, if any (can be undefined).
+
+### `wallet.icon`
+
+The icon provided by the wallet, if any (can be undefined).
+
 ### `wallet.address`
 
 A synchronous call to get the connected wallet's address.
