@@ -53,6 +53,7 @@ interface WalletContents = {
   suiBalance: bigint,
   coins: Coin[],
   nfts: Nft[],
+  objects: SuiObject[]
 }
 ```
 

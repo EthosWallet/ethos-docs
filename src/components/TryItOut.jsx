@@ -5,6 +5,7 @@ import { ethos, SignInButton } from 'ethos-connect';
 
 const TryItOut = () => {
     const { wallet } = ethos.useWallet();
+    console.log("WALLET", wallet)
     const [addressWidget, setAddressWidget] = useState(false);
 
     const toggleWidget = useCallback(() => {
