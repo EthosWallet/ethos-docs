@@ -4,7 +4,7 @@ pageTitle: EthosConnect Docs
 description: The easiest sign-in experience on Sui
 ---
 
-EthosConnect is a React library that makes it easy to connect a wallet to your dApp on Sui.
+EthosConnect is an NPM package that makes it easy to connect a wallet to your dApp on Sui. It is currently available for React ([example app](/example-react-app) & [npm package](https://www.npmjs.com/package/ethos-connect)) and Vue ([example app](/example-vue-app) & [npm package](https://www.npmjs.com/package/ethos-connect-vue))
 
 With EthosConnect you don't have to worry about which wallets can connect with your dApp. Any wallet that implements the [Sui Wallet Standard](https://github.com/MystenLabs/sui/tree/main/sdk/wallet-adapter#wallet-standard) will be able to connect to your dApp and when someone developers a new wallet that implements the Wallet Standard it will be able to connect to your dApp with no changes on your part.
 

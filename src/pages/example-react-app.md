@@ -1,5 +1,5 @@
 ---
-title: Example app
+title: Example React App
 description: An example app with code using the Ethos sign in
 ---
 

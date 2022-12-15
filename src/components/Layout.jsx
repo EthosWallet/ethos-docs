@@ -18,7 +18,8 @@ const navigation = [
     title: 'Overview',
     links: [
       { title: 'Introduction', href: '/' },
-      { title: 'Example app', href: '/example-app' },
+      { title: 'Example React App', href: '/example-react-app' },
+      { title: 'Example Vue App', href: '/example-vue-app' },
       // { title: 'How it works', href: '/how-it-works' },
     ],
   },

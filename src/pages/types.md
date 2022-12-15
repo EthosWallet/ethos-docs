@@ -11,6 +11,17 @@ EthosConnect ships with full [Typescript](https://www.typescriptlang.org/) suppo
 
 From [`@mysten/sui.js`](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/classes/JsonRpcProvider.html)
 
+### `EthosConfiguration`
+
+```js
+interface EthosConfiguration {
+  apiKey?: string
+  walletAppUrl?: string
+  hideEmailSignIn?: boolean
+  hideWalletSignIn?: boolean
+}
+```
+
 ### `EthosConnectStatus`
 
 ```js
