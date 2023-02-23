@@ -11,7 +11,7 @@ EthosConnect provides a variety of utility functions that you might find useful 
 
 The `ethos.dripSui(address)` call takes a valid wallet address and will attempt to drip
 Sui into the wallet. This can be helpful to enusre users can use your dApp if they do
-not yet have Sui.
+not yet have Sui. This feature is only available on devnet.
 
 ```js
 import { useEffect } from 'react'
@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     if (!wallet) return
 
-    ethos.dripSui(wallet.address)
+    ethos.dripSui({ address: wallet.address })
   }, [wallet])
 
   return <div>Wallet balance: {wallet?.suiBalance || '---'}</div>
