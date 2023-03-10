@@ -31,11 +31,13 @@ The `provider` is your read-only connection to the blockchain. You can see objec
 
 The `status` object can be used to tell you if a wallet is connected to your site or if EthosConnect is in the process of detecting if the users has a connected wallet.
 
-`status` returns one of three possible states of the `EthosConnectStatus`](types#ethos-connect-status) enum:
+`status` returns one of three possible states of the [`EthosConnectStatus`](types#ethos-connect-status) enum:
 
 - `loading`
 - `no_connection`
 - `connected`
+
+Note that the status is `loading` if the user is being shown the connect wallet popup, and will resolve to `no_connection` if they reject the connection or close the popup, or `connected` if they connect their wallet.
 
 They can be used like so:
 
