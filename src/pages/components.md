@@ -78,7 +78,11 @@ import { ethos } from 'ethos-connect'
 function App() {
   return (
     <div>
-      <ethos.components.AddressWidget />
+      <ethos.components.AddressWidget 
+        excludeButtons={[
+          ethos.enums.AddressWidgetButtons.WalletExplorer
+        ]} 
+      />
     </div>
   )
 }
