@@ -17,7 +17,7 @@ This hook gives you information about the user's wallet. Click the name of each 
 | ---------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [`provider`](hooks#provider) | [`JsonRpcProvider`](types#json-rpc-provider)       | A read-only connection to the Sui blockchain.                                                                                                                                                                                                                                  |
 | [`status`](hooks#status)     | [`EthosConnectStatus`](types#ethos-connect-status) | Wallet connection status. `loading` means EthosConnect is searching for a cached wallet. `no_connection` means the search is complete, and no connected wallet was found. `connected` means that a wallet has been successfully connected and the `wallet` object may be used. |
-| [`wallet`](hooks#wallet)     | [`Wallet`](types#wallet)                           | EthosConnect is in the process of detecting if the users has a connected wallet.                                                                                                                                                                                               |
+| [`wallet`](hooks#wallet)     | [`Wallet`](types#wallet)                           | The connected wallet with convenience attributes and methods for getting the wallet address, teh wallet contents, signing transactions, etc.                                                                                                                                                           |
 
 ---
 
@@ -84,7 +84,7 @@ The icon provided by the wallet, if any (can be undefined).
 
 ### `wallet.address`
 
-A synchronous call to get the connected wallet's address.
+A pre-loaded attribute to get the connected wallet's address.
 
 ```js
 import { ethos } from 'ethos-connect'
@@ -95,6 +95,17 @@ function App() {
   return <div>Address: {wallet?.address}</div>
 }
 ```
+
+### `wallet.currentAccount`
+
+#### ** Work-In-Progress **
+
+A pre-loaded attribute containing complete account information including the address, name, icon, type, publicKey, etc. for the currently connected wallet.
+
+### `wallet.accounts`
+
+ A list of all accounts that have provided connection permission to the dapp.
+
 
 ### `wallet.contents`
 
@@ -160,50 +171,50 @@ function App() {
 }
 ```
 
-### `wallet.signAndExecuteTransaction()`
+### `wallet.signAndExecuteTransactionBlock()`
 
-Used to sign and submit a transaction to the blockchain. Takes a [`SignableTransaction`](https://github.com/MystenLabs/sui/blob/e45b188a80a067700efdc5a099745f18e1f41aac/sdk/typescript/src/signers/txn-data-serializers/txn-data-serializer.ts#L137) and returns a [`Promise<SuiTransactionResponse>`](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/modules.html#SuiTransactionResponse).
+Used to sign and submit a transaction to the blockchain. Takes a [`TransactionBlock`](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/classes/TransactionBlock.html) along with ['options'](https://github.com/MystenLabs/sui/blob/ab4c9ae8560d5d123f4dfe7fd8fa60e38a8c20bf/sdk/typescript/src/types/transactions.ts#L395) on what information to include in the response and how quickly to return the response with ['requestType'](https://github.com/MystenLabs/sui/blob/ab4c9ae8560d5d123f4dfe7fd8fa60e38a8c20bf/sdk/typescript/src/types/transactions.ts#L127). It returns a [`Promise<SuiTransactionBlockResponse>`](https://github.com/MystenLabs/sui/blob/ab4c9ae8560d5d123f4dfe7fd8fa60e38a8c20bf/sdk/typescript/src/types/transactions.ts#L378).
 
-This function is frequently used in dApps and is evolving on the Sui blockchain. The best sources of information for each type of call are below. In each case camelCase should be used for the parameter name (e.g. `packageObjectId` instead of `package_object_id`)
-
-- `moveCall`: [parameters](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/interfaces/MoveCallTransaction.html), [description](https://docs.sui.io/sui-jsonrpc#sui_moveCall)
-- `mergeCoins`: [parameters](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/interfaces/MergeCoinTransaction.html), [description](https://docs.sui.io/sui-jsonrpc#sui_mergeCoins)
-- `splitCoin`: [parameters](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/interfaces/SplitCoinTransaction.html), [description](https://docs.sui.io/sui-jsonrpc#sui_splitCoin)
-- `transferObject`: [parameters](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/interfaces/TransferObjectTransaction.html), [description](https://docs.sui.io/sui-jsonrpc#sui_transferObject)
-- `transferSui`: [parameters](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/interfaces/TransferSuiTransaction.html), [description](https://docs.sui.io/sui-jsonrpc#sui_transferSui)
-- `pay`: [description](https://docs.sui.io/sui-jsonrpc#sui_pay)
-- `paySui`: [description](https://docs.sui.io/sui-jsonrpc#sui_paySui)
-- `payAllSui`: [description](https://docs.sui.io/sui-jsonrpc#sui_payAllSui)
+This function is frequently used in dApps and is evolving on the Sui blockchain. The [`TransactionBlock`](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/classes/TransactionBlock.html) allows for multiple transactions to be chained together in one atomic transaction that can be quite complex.
 
 ```js
 import { useCallback } from 'react'
-import { ethos } from 'ethos-connect'
+import { ethos, TransactionBlock } from 'ethos-connect'
 
 function App() {
-  const contractAddress = '0x0000000000000000000000000000000000000002'
+  const contractAddress = '0x1cbfdf7de5004f887705fa53bb345d4372e5004bd8b04a6f8868f5e1ca1af9c7'
   const { wallet } = ethos.useWallet()
 
   const mint = useCallback(async () => {
     if (!wallet) return
 
     try {
-      const signableTransaction = {
-        kind: 'moveCall' as const,
-        data: {
-          packageObjectId: contractAddress,
-          module: 'devnet_nft',
-          function: 'mint',
-          typeArguments: [],
-          arguments: [
-            'Example NFT Name',
-            'This is a description',
-            'https://ethoswallet.xyz/assets/images/ethos-email-logo.png',
-          ],
-          gasBudget: 10000,
-        },
-      }
+      const transactionBlock = new TransactionBlock();
+      const nft = mintTransactionBlock.moveCall({
+        target: `${contractAddress}::ethos_example_nft::mint`,
+        arguments: [
+          mintTransactionBlock.pure("Ethos Example NFT"),
+          mintTransactionBlock.pure("A sample NFT from Ethos Wallet."),
+          mintTransactionBlock.pure("https://ethoswallet.xyz/assets/images/ethos-email-logo.png")
+        ]
+      })
+      mintTransactionBlock.transferObjects(
+        [nft],
+        mintTransactionBlock.pure('0xb0e24ba1afc3d2f5e348b569e72e94cf20ec2cecf3cd27edea1c3ad628e5374c', 'address')
+      )
 
-      wallet.signAndExecuteTransaction(signableTransaction)
+      const response = await wallet.signAndExecuteTransactionBlock({
+        transactionBlock,
+        options: {
+          showInput: true,
+          showEffects: true,
+          showEvents: true,
+          showBalanceChanges: true,
+          showObjectChanges: true,
+        }
+      });
+
+      console.log("Transaction Response", response)
     } catch (error) {
       console.log(error)
     }

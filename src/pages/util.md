@@ -7,6 +7,15 @@ EthosConnect provides a variety of utility functions that you might find useful 
 
 ---
 
+# `TransactionBlock`
+
+TransactionBlock from the `@mysten/sui.js` is provided as a top level export for convenience:
+
+```js
+import { ethos, TransactionBlock } from 'ethos-connect'
+```
+
+
 # `dripSui`
 
 The `ethos.dripSui(address)` call takes a valid wallet address and will attempt to drip

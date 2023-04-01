@@ -20,7 +20,7 @@ yarn add ethos-connect
 ```
 
 {% callout title="Note" %}
-EthosConnect is a [React](https://reactjs.org/) library.
+EthosConnect is a [React](https://reactjs.org/) library. For [Vue](https://vuejs.org/) support see [EthosConnectVue](/example-vue-app)
 {% /callout %}
 
 ### Configure and wrap providers
@@ -34,7 +34,9 @@ const App = () => {
   return (
     <EthosConnectProvider
       ethosConfiguration={{
-        hideEmailSignIn: true // defaults to false
+        apiKey: [YOUR API KEY] // Optional. Required for email signin. Please contact support@ethoswallet.xyz to acquire an API key.
+        network: [RPC URL] // Optional. Defaults to https://fullnode.devnet.sui.io/ 
+        hideEmailSignIn: true // Optional.  Defaults to false
       }}
     >
       <YourApp />

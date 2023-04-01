@@ -5,9 +5,23 @@ description: An example app with code using the Ethos sign in
 
 This sample app uses Vue with TypeScript.
 
+[NPM Package](https://www.npmjs.com/package/ethos-connect-vue)
+
 [View the live app](https://ethoswallet.github.io/ethos-connect-vue-example-app/)
 
 [See the code](https://github.com/EthosWallet/ethos-connect-vue-example-app)
+
+## Install
+
+```bash
+npm install ethos-connect-vue
+```
+
+or
+
+```bash
+yarn add ethos-connect-vue
+```
 
 ## Important files in this repository
 
@@ -71,7 +85,8 @@ You can reference the context of the package, which has information about the co
 
 ```js
 <script setup lang="ts">
-import { ethosForVue } from "ethos-connect-vue";
+import { ethosForVue, TransactionBlock } from "ethos-connect-vue";
+import { ETHOS_EXAMPLE_CONTRACT } from "../constants";
 
 const { context } = ethosForVue() || {};
 const { wallet } = context?.wallet || {};
@@ -79,19 +94,20 @@ const { wallet } = context?.wallet || {};
 const mint = () => {
   if (!wallet) return;
 
-  wallet.signAndExecuteTransaction({
-    kind: "moveCall",
-    data: {
-      packageObjectId: "0x0000000000000000000000000000000000000002",
-      module: "devnet_nft",
-      function: "mint",
-      typeArguments: [],
-      arguments: [
-        "Ethos Example NFT",
-        "A sample NFT from Ethos Wallet.",
-        "https://ethoswallet.xyz/assets/images/ethos-email-logo.png",
-      ],
-      gasBudget: 10000,
+  const transactionBlock = new TransactionBlock();
+  transactionBlock.moveCall({
+    target: `${ETHOS_EXAMPLE_CONTRACT}::ethos_example_nft::mint_to_sender`,
+    arguments: [
+      transactionBlock.pure("Ethos Example NFT"),
+      transactionBlock.pure("A sample NFT from Ethos Wallet."),
+      transactionBlock.pure("https://ethoswallet.xyz/assets/images/ethos-email-logo.png"),
+    ],
+  });
+
+  await wallet.signAndExecuteTransactionBlock({
+    transactionBlock,
+    options: {
+      showEffects: true,
     },
   });
 };

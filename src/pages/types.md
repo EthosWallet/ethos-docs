@@ -48,11 +48,15 @@ enum AddressWidgetButtons {
 interface Wallet = {
     address: SuiAddress,
     contents: WalletContents,
-    getAccounts: () => Promise<string[]>,
-    getAddress: () => Promise<string>,
-    signAndExecuteTransaction: (transaction: SignableTransaction) => Promise<SuiTransactionResponse>,
+    type: SignerType,
+    name?: string,
+    icon?: string,
+    getAddress: () => Promise<SuiAddress | null>
+    accounts: readonly WalletAccount[],
+    currentAccount: WalletAccount | null,
+    signAndExecuteTransactionBlock: (input: EthosSignAndExecuteTransactionBlockInput) => Promise<SuiTransactionBlockResponse>,
     requestPreapproval: (preApproval: Preapproval) => Promise<boolean>,
-    sign: (message: any) => Promise<any>,
+    signMessage: (input: EthosSignMessageInput) => Promise<SuiSignMessageOutput>,
     disconnect: () => void
 }
 ```
