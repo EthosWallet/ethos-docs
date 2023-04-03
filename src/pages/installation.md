@@ -35,6 +35,7 @@ const App = () => {
     <EthosConnectProvider
       ethosConfiguration={{
         apiKey: [YOUR API KEY] // Optional. Required for email signin. Please contact support@ethoswallet.xyz to acquire an API key.
+        chain: [CHAIN IDENTIFIER] // Optional. Defaults to sui:devnet - An enum containing acceptable chain identifier strings can be imported from the ethos-connect package 
         network: [RPC URL] // Optional. Defaults to https://fullnode.devnet.sui.io/ 
         hideEmailSignIn: true // Optional.  Defaults to false
       }}
@@ -44,6 +45,8 @@ const App = () => {
   );
 };
 ```
+
+If you would like to switch your dapp from one network to another you need to change both `chain` and `network` in the `ethosConfiguration`.
 
 Interested in customizing the text shown in the sign-in modal? Check out the [Customization page](customization).
 

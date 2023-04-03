@@ -17,8 +17,22 @@ From [`@mysten/sui.js`](http://typescript-sdk-docs.s3-website-us-east-1.amazonaw
 interface EthosConfiguration {
   apiKey?: string
   walletAppUrl?: string
+  chain?: Chain
+  network?: string
   hideEmailSignIn?: boolean
   hideWalletSignIn?: boolean
+  preferredWallets?: string[]
+  redirectTo?: string
+}
+```
+
+### `Chain`
+
+```js
+enum Chain {
+  SUI_DEVNET = 'sui:devnet',
+  SUI_TESTNET = 'sui:testnet',
+  SUI_CUSTOM = 'sui:custom',
 }
 ```
 

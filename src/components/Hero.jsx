@@ -39,7 +39,6 @@ export function Hero() {
   return (
     <EthosConnectProvider
       ethosConfiguration={{
-        walletAppUrl: '',
         appId: 'ethos',
       }}
       dappName="<your dApp&apos;s Name>"

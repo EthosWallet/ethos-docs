@@ -18,7 +18,7 @@ import { ethos, TransactionBlock } from 'ethos-connect'
 
 # `dripSui`
 
-The `ethos.dripSui(address)` call takes a valid wallet address and will attempt to drip
+The `ethos.dripSui({ address, network, faucet })` call takes a valid wallet address and will attempt to drip
 Sui into the wallet. This can be helpful to enusre users can use your dApp if they do
 not yet have Sui. This feature is only available on devnet.
 
@@ -32,7 +32,11 @@ function App() {
   useEffect(() => {
     if (!wallet) return
 
-    ethos.dripSui({ address: wallet.address })
+    ethos.dripSui({ 
+      network: "https://devnet.fullnode.sui.io", 
+      faucet: "https://faucet.devnet.sui.io/", 
+      address: wallet.address 
+    })
   }, [wallet])
 
   return <div>Wallet balance: {wallet?.suiBalance || '---'}</div>
@@ -59,7 +63,7 @@ function App() {
 }
 ```
 
-# `lookup`
+# `lookup` (not active)
 
 The `ethos.lookup(addressOrName)` call takes either the address of an on-chain wallet (e.g. `0x56e69614585a2430d0ae7e6ab69cff3f8116d51d`) or a SuiNS name. If an address is provided the lookup will return the associated name if one exists. If the name is provided then the lookup will provide the address associated with that name.
 
