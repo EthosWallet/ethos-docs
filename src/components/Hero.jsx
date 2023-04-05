@@ -41,6 +41,7 @@ export function Hero() {
     preferredWallets: ['Ethos Wallet'],
     network: "https://fullnode.devnet.sui.io"
   };
+  console.log("ethosConfiguration", ethosConfiguration)
 
   return (
     <EthosConnectProvider
