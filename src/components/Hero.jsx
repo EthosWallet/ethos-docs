@@ -36,11 +36,15 @@ function TrafficLightsIcon(props) {
 }
 
 export function Hero() {
+  const ethosConfiguration = {
+    apiKey: process.env.NEXT_PUBLIC_ETHOS_API_KEY,
+    preferredWallets: ['Ethos Wallet'],
+    network: "https://fullnode.devnet.sui.io"
+  };
+
   return (
     <EthosConnectProvider
-      ethosConfiguration={{
-        appId: 'ethos',
-      }}
+      ethosConfiguration={ethosConfiguration}
       dappName="<your dApp&apos;s Name>"
       dappIcon={<ExampleIcon />}
       connectMessage={<div>Your connect message goes here!</div>}
