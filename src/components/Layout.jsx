@@ -44,6 +44,16 @@ const navigation = [
       // { title: 'Preapprovals', href: '/preapprovals' },
     ],
   },
+  {
+    title: 'REST API reference',
+    links: [
+      { title: 'Concepts', href: '/rest-concepts' },
+      { title: 'Authentication', href: '/rest-auth' },
+      { title: 'Account', href: '/rest-account' },
+      { title: 'OpenAPI Tools', href: '/rest-openapi' },
+    ],
+  }
+  
 ]
 
 function GitHubIcon(props) {
