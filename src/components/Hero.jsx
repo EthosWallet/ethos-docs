@@ -64,7 +64,7 @@ export function Hero() {
               />
               <div className="relative">
                 <p className="bg-gradient-to-r from-purple-200 via-violet-400 to-purple-200 bg-clip-text font-display text-4xl tracking-tight text-transparent">
-                  EthosConnect
+                  EthosConnect and Ethos API
                 </p>
                 <p className="inline text-slate-400 text-5xl tracking-tight font-display">
                   Connect with every wallet on Sui

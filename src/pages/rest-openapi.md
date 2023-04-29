@@ -9,6 +9,10 @@ Click the link below and start playing with the API as soon as you have your API
 
 ---
 
-Once there just click Authorize on the API Tools website, plug in your API Key, and start "REST"-ing.
+Once there, just click Authorize on the API Tools website, plug in your API Key, and start "REST"-ing.
 
 [Take Me To The Tools!](https://api-docs.ethoswallet.xyz)
+
+---
+
+Want to use Postman, Insomnia, or any of the other [zillions of tools](https://openapi.tools/) that support OpenAPI?  No problem, just [download the swagger.json document](https://api-docs.ethoswallet.xyz/swagger.json) and use it howevery you like.
