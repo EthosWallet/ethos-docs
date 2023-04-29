@@ -10,7 +10,9 @@ With EthosConnect you don't have to worry about which wallets can connect with y
 
 And when you are ready you can enable email wallets, which allow wallet-less users to connect to your dApp through their email (social login coming soon) with no extra effort on your part (email wallets look identical to all other wallets from the dApp's perspective).
 
-Already have the interface covered? Check out [Ethos REST API](https://docs.ethoswallet.xyz/rest-concepts), an OpenAPI 3.0 compliant REST API that lets you create new wallets for your customers and use them to sign data in your applications. You control the experience!
+Already have the interface covered? Check out [Ethos REST API](https://docs.ethoswallet.xyz/rest-concepts), an OpenAPI 3.0 compliant REST API that lets you create new wallets for your customers and use them to sign data in your applications. You control the experience!  
+
+Contact [Ethos Support](mailto:support@ethoswallet.xyz) to get set up and start using the REST API! 
 
 {% .lead %}
 
