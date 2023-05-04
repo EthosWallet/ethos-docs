@@ -15,12 +15,32 @@ TransactionBlock from the `@mysten/sui.js` is provided as a top level export for
 import { ethos, TransactionBlock } from 'ethos-connect'
 ```
 
+# `checkForAssetType`
+
+Check to see if the owner of a wallet or a signer has a given asset type. Takes the convenience param `type` which is the type of the object or the more complex `filter` which provides more flexible search options.
+
+```js
+import { useEffect } from 'react';
+import { ethos } from 'ethos-connect';
+
+const { wallet } = ethos.useWallet();
+
+useEffect(() => {
+    const userHasNFT = async () => {
+        return await ethos.checkForAssetType({
+            wallet,
+            type: '0x72f9c76421170b5a797432ba9e1b3b2e2b7cf6faa26eb955396c773af2479e1e::game_8192::Game8192'
+        });
+    }
+    userHasNFT();
+}, [])
+```
+
+The return object will be of type `PaginatedObjectsResponse`.
 
 # `dripSui`
 
-The `ethos.dripSui({ address, network, faucet })` call takes a valid wallet address and will attempt to drip
-Sui into the wallet. This can be helpful to enusre users can use your dApp if they do
-not yet have Sui. This feature is only available on devnet.
+The `ethos.dripSui({ address, network, faucet })` call takes a valid wallet address and will attempt to drip Sui into the wallet. This can be helpful to ensure users can use your dApp if they do not yet have Sui. This feature is only available on devnet and testnet.
 
 ```js
 import { useEffect } from 'react'
