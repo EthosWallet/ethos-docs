@@ -112,9 +112,8 @@ function Header({ navigation }) {
         <MobileNavigation navigation={navigation} />
       </div>
       <div className="relative flex flex-grow basis-0 items-center gap-2 sm:gap-8">
-        <Link href="/" aria-label="Docs Home page" className='flex flex-row gap-2'>
-          <Logomark className="h-9 w-9 lg:hidden" />
-          <Logo className="hidden h-9 w-auto fill-slate-700 dark:fill-violet-100 lg:block" />
+        <Link href="/" aria-label="Docs Home page" className='flex flex-row gap-2 hidden lg:block'>
+          <Logo />
         </Link>
         <a href="https://ethoswallet.xyz" target='_blank' rel='noreferrer' className='hidden sm:flex gap-1 items-center dark:text-white underline'>
           <span>
