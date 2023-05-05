@@ -1,15 +1,9 @@
-import { Fragment } from 'react'
-import Image from 'next/future/image'
-import clsx from 'clsx'
-import Highlight, { defaultProps } from 'prism-react-renderer'
+import { Button } from '@/components/Button';
+import blurIndigoImage from '@/images/blur-indigo.png';
+import { PuzzlePieceIcon } from '@heroicons/react/24/solid';
 import { EthosConnectProvider } from 'ethos-connect';
-import { Button } from '@/components/Button'
-import { HeroBackground } from '@/components/HeroBackground'
-import blurCyanImage from '@/images/blur-cyan.png'
-import blurIndigoImage from '@/images/blur-indigo.png'
-import TryItOut from './TryItOut'
-import Ethos from './icons/EthosLogo';
-import ExampleIcon from './icons/ExampleIcon';
+import Image from 'next/future/image';
+import TryItOut from './TryItOut';
 
 const codeLanguage = 'javascript'
 const code = `export default {
@@ -46,7 +40,7 @@ export function Hero() {
     <EthosConnectProvider
       ethosConfiguration={ethosConfiguration}
       dappName="<your dApp&apos;s Name>"
-      dappIcon={<ExampleIcon />}
+      dappIcon={<div className='flex items-center place-content-center p-1 h-12 w-12 bg-gray-500 rounded-lg'><PuzzlePieceIcon className="h-full w-full text-white" /></div>}
       connectMessage={<div>Your connect message goes here!</div>}
     >
       <div className="overflow-hidden bg-slate-900 dark:-mb-32 dark:mt-[-4.5rem] dark:pb-32 dark:pt-[4.5rem] dark:lg:mt-[-4.75rem] dark:lg:pt-[4.75rem]">
