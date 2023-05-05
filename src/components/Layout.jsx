@@ -116,7 +116,7 @@ function Header({ navigation }) {
           <Logomark className="h-9 w-9 lg:hidden" />
           <Logo className="hidden h-9 w-auto fill-slate-700 dark:fill-violet-100 lg:block" />
         </Link>
-        <a href="https://ethoswallet.xyz" target='_blank' rel='noreferrer' className='hidden sm:flex gap-1 items-center underline'>
+        <a href="https://ethoswallet.xyz" target='_blank' rel='noreferrer' className='hidden sm:flex gap-1 items-center dark:text-white underline'>
           <span>
             Ethos Wallet
           </span>
