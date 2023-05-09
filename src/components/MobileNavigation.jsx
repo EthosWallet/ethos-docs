@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Dialog } from '@headlessui/react'
 
-import { Logomark } from '@/components/Logo'
+import { Logo, Logomark } from '@/components/Logo'
 import { Navigation } from '@/components/Navigation'
 
 function MenuIcon(props) {
@@ -91,10 +91,10 @@ export function MobileNavigation({ navigation }) {
               <CloseIcon className="h-6 w-6 stroke-slate-500" />
             </button>
             <Link href="/" className="ml-6" aria-label="Home page">
-              <Logomark className="h-9 w-9" />
+              <Logo className='h-9' />
             </Link>
           </div>
-          <a href="https://ethoswallet.xyz" target='_blank' rel='noreferrer' className='flex gap-1 mt-4 items-center underline'>
+          <a href="https://ethoswallet.xyz" target='_blank' rel='noreferrer' className='flex gap-1 mt-4 items-center underline dark:text-white'>
             <span>
               Ethos Wallet
             </span>

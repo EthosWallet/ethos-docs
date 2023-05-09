@@ -15,16 +15,9 @@ const TryItOut = () => {
         <div>
             <div className="space-x-2 text-xs">
                 <div className='flex justify-between items-center'>
-                    <div
-                        className={'flex h-6 rounded-full bg-gradient-to-r from-violet-400/30 via-violet-400 to-violet-400/30 p-px font-medium text-violet-300'}
-                    >
-                        <div
-                            className={'flex items-center rounded-full px-2.5 bg-slate-800'}
-                        >
-                            Try it out
-                        </div>
-                    </div>
-                    <div
+                    <p className="inline text-slate-400 text-xl tracking-tight font-display">
+                        Try it out
+                    </p>                    <div
                         className={'flex h-6 rounded-full cursor-pointer bg-gradient-to-r from-violet-400/30 via-violet-400 to-violet-400/30 p-px font-medium text-violet-300'}
                         onClick={toggleWidget}
                     >
@@ -46,7 +39,7 @@ const TryItOut = () => {
                     </div>
                 ) : (
                     wallet ? (
-                        <button 
+                        <button
                             className='rounded-full bg-[#6D28D9] py-2 px-4 text-sm font-semibold text-white'
                             onClick={wallet.disconnect}
                         >
