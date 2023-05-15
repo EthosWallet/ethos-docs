@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Head from 'next/head'
 import { slugifyWithCounter } from '@sindresorhus/slugify'
 
@@ -6,6 +6,7 @@ import { Layout } from '@/components/Layout'
 
 import 'focus-visible'
 import '@/styles/tailwind.css'
+import { AnalyticsProvider } from '@/providers/AnalyticsProvider'
 
 function getNodeText(node) {
   let text = ''
@@ -63,14 +64,20 @@ export default function App({ Component, pageProps }) {
     : []
 
   return (
-      <>
-        <Head>
-          <title>{pageTitle}</title>
-          {description && <meta name="description" content={description} />}
-        </Head>
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+        {description && <meta name="description" content={description} />}
+      </Head>
+      <Providers>
         <Layout title={title} tableOfContents={tableOfContents}>
           <Component {...pageProps} />
         </Layout>
-      </>
+      </Providers>
+    </>
   )
+}
+
+function Providers({ children }) {
+  return <AnalyticsProvider>{children}</AnalyticsProvider>
 }

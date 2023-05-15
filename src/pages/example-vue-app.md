@@ -73,7 +73,7 @@ You can reference components like the `AddressWidget` directly in any component:
 ```js
 <template>
   <div className="header">
-    <div>Ethos Connect Vue Example App</div>
+    <div>EthosConnect Vue Example App</div>
     <AddressWidget />
   </div>
 </template>
