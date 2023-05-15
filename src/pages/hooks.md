@@ -308,12 +308,13 @@ const Sign = () => {
 
   const sign = useCallback(async () => {
     try {
-      const response = await wallet?.signMessage({ message: "Hello" });
+      const message = new TextEncoder().encode('hello');
+      const response = await wallet?.signMessage({ message });
         
       console.log("Sign result: ", response)
 
-      const { messageBytes, signature } = response;
-      const verified = await verifyMessage(messageBytes, signature, IntentScope.PersonalMessage);
+      const { signature } = response;
+      const verified = await verifyMessage(message, signature, IntentScope.PersonalMessage);
 
       console.log("Message verified: ", verified)
     } catch (e) {
