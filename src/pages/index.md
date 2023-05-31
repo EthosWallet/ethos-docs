@@ -30,7 +30,7 @@ Contact [Ethos Support](mailto:support@ethoswallet.xyz) to get set up and start 
 
 {% quick-link title="Installation" icon="installation" href="/installation" description="Follow the step-by-step guide to installing the library." /%}
 
-{% quick-link title="Example app with code" icon="presets" href="/example-app" description="View the code base for an example app using Ethos." /%}
+{% quick-link title="Example app with code" icon="presets" href="/example-react-app" description="View the code base for an example app using Ethos." /%}
 
 {% quick-link title="Advanced API reference" icon="plugins" href="/hooks" description="Leverage the APIs to give your users a tailored experience." /%}
 
