@@ -41,7 +41,7 @@ const App = () => {
       }}
     >
       <YourApp />
-    <EthosConnectProvider />
+    </EthosConnectProvider>
   );
 };
 ```

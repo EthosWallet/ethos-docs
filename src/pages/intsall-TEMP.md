@@ -52,7 +52,7 @@ const App = () => {
       hideEmailSignIn={true} // defaults to false
     >
       <YourApp />
-    <EthosConnectProvider />
+    </EthosConnectProvider>
   );
 };
 ```
