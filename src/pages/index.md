@@ -18,6 +18,20 @@ With EthosConnect you don't have to worry about which wallets can connect with y
 
 And when you are ready you can enable email wallets, which allow wallet-less users to connect to your dApp through their email (social login coming soon) with no extra effort on your part (email wallets look identical to all other wallets from the dApp's perspective).
 
+{% .lead %}
+
+{% quick-links %}
+
+{% quick-link title="Installation" icon="installation" href="/installation" description="Follow the step-by-step guide to installing the library." /%}
+
+{% quick-link title="Example app with code" icon="presets" href="/example-react-app" description="View the code base for an example app using Ethos." /%}
+
+{% quick-link title="EthosConnect API reference" icon="plugins" href="/hooks" description="Leverage the APIs to give your users a tailored experience." /%}
+
+{% quick-link title="Theme options" icon="theming" href="/customization" description="Match the EthosConnect flow with the theme of your app." /%}
+
+{% /quick-links %}
+
 ## The EthosConnect RESTful API
 
 Already have the interface covered? Check out [EthosConnect REST API](https://docs.ethoswallet.xyz/rest-concepts), an OpenAPI 3.0 compliant REST API that lets you create new wallets for your customers and use them to sign data in your applications. You control the experience!  
@@ -28,16 +42,7 @@ Contact [Ethos Support](mailto:support@ethoswallet.xyz) to get set up and start 
 
 {% quick-links %}
 
-{% quick-link title="Installation" icon="installation" href="/installation" description="Follow the step-by-step guide to installing the library." /%}
-
-{% quick-link title="Example app with code" icon="presets" href="/example-react-app" description="View the code base for an example app using Ethos." /%}
-
-{% quick-link title="Advanced API reference" icon="plugins" href="/hooks" description="Leverage the APIs to give your users a tailored experience." /%}
-
-{% quick-link title="Theme options" icon="theming" href="/customization" description="Match the EthosConnect flow with the theme of your app." /%}
-
 {% quick-link title="REST API reference" icon="plugins" href="/rest-concepts" description="Use our new REST API and let Ethos take care of the wallet creation and data signing." /%}
-
 
 {% /quick-links %}
 
