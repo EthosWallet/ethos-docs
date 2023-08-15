@@ -33,7 +33,7 @@ const navigation = [
     ],
   },
   {
-    title: 'API reference',
+    title: 'EthosConnect API reference',
     links: [
       { title: 'Hooks', href: '/hooks' },
       { title: 'Components', href: '/components' },

@@ -22,7 +22,7 @@ const App = () => {
       connectMessage='Your connect message goes here!'
     >
       <YourApp />
-    <EthosConnectProvider />
+    </EthosConnectProvider>
   );
 };
 ```

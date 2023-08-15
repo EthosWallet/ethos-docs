@@ -20,7 +20,7 @@ const App = () => {
         hideEmailSignIn={true}
     >
       <YourApp />
-    <EthosConnectProvider />
+    </EthosConnectProvider>
   );
 };
 ```
@@ -41,7 +41,7 @@ const App = () => {
         ethosConfiguration={ apiKey: 'your-api-key'}
     >
       <YourApp />
-    <EthosConnectProvider />
+    </EthosConnectProvider>
   );
 };
 ```

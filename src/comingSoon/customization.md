@@ -22,7 +22,7 @@ const App = () => {
       theme={Themes.Dark}
     >
       <YourApp />
-    <EthosConnectProvider />
+    </EthosConnectProvider>
   );
 };
 ```
@@ -41,7 +41,7 @@ const App = () => {
       accentColor="#0891b2"
     >
       <YourApp />
-    <EthosConnectProvider />
+    </EthosConnectProvider>
   );
 };
 ```
