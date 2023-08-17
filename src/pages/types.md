@@ -7,9 +7,7 @@ EthosConnect ships with full [Typescript](https://www.typescriptlang.org/) suppo
 
 ## Types
 
-### `JsonRpcProvider`
-
-From [`@mysten/sui.js`](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/classes/JsonRpcProvider.html)
+### `SuiClient`
 
 ### `EthosConfiguration`
 

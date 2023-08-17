@@ -15,15 +15,15 @@ This hook gives you information about the user's wallet. Click the name of each 
 
 | Property                     | Return type                                        | Description                                                                                                                                                                                                                                                                    |
 | ---------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [`provider`](hooks#provider) | [`JsonRpcProvider`](types#json-rpc-provider)       | A read-only connection to the Sui blockchain.                                                                                                                                                                                                                                  |
+| [`client`](hooks#client) | [`SuiClient`](types#sui-client)       | A read-only connection to the Sui blockchain.                                                                                                                                                                                                                                  |
 | [`status`](hooks#status)     | [`EthosConnectStatus`](types#ethos-connect-status) | Wallet connection status. `loading` means EthosConnect is searching for a cached wallet. `no_connection` means the search is complete, and no connected wallet was found. `connected` means that a wallet has been successfully connected and the `wallet` object may be used. |
 | [`wallet`](hooks#wallet)     | [`Wallet`](types#wallet)                           | The connected wallet with convenience attributes and methods for getting the wallet address, teh wallet contents, signing transactions, etc.                                                                                                                                                           |
 
 ---
 
-## `provider`
+## `client`
 
-The `provider` is your read-only connection to the blockchain. You can see objects owned by an address, read transactions, and more. Full documentation from [@mysten/sui.js](http://typescript-sdk-docs.s3-website-us-east-1.amazonaws.com/classes/Provider.html).
+The `client` is your read-only connection to the blockchain. You can see objects owned by an address, read transactions, and more.
 
 ---
 
@@ -272,7 +272,7 @@ function App() {
 }
 ```
 
-### `wallet.sign()`
+### `wallet.signPersonalMessage()`
 
 Prompts the user to sign a message.
 
@@ -286,7 +286,7 @@ function App() {
     if (!wallet) return
 
     try {
-      const result = await wallet.sign({
+      const result = await wallet.signPersonalMessage({
         message: 'sign me!',
       })
     } catch (e) {
