@@ -46,4 +46,4 @@ Contact [Ethos Support](mailto:support@ethoswallet.xyz) to get set up and start 
 
 {% /quick-links %}
 
-Have feedback on Ethos? [Join our Discord](https://discord.gg/ethoswallet) or [Send us a note](mailto:support@ethoswallet.xyz).
+Have feedback on Ethos? [Join our Discord](https://bit.ly/ethosdiscordcommunity) or [Send us a note](mailto:support@ethoswallet.xyz).

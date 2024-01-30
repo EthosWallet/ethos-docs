@@ -133,7 +133,7 @@ function Header({ navigation }) {
         <Link href="https://twitter.com/EthosWalletXYZ" className="group" aria-label="Twitter" target='_blank' rel='noopener noreferrer'>
           <TwitterIcon className="h-6 w-6 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
         </Link>
-        <Link href="https://discord.gg/ethoswallet" className="group" aria-label="Twitter" target='_blank' rel='noopener noreferrer'>
+        <Link href="https://bit.ly/ethosdiscordcommunity" className="group" aria-label="Twitter" target='_blank' rel='noopener noreferrer'>
           <DiscordIcon className="h-6 w-6 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
         </Link>
       </div>
